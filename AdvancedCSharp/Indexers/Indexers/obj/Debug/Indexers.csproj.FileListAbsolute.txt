@@ -1,0 +1,6 @@
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\Indexers\Indexers\bin\Debug\Indexers.exe.config
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\Indexers\Indexers\bin\Debug\Indexers.exe
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\Indexers\Indexers\bin\Debug\Indexers.pdb
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\Indexers\Indexers\obj\Debug\Indexers.csprojResolveAssemblyReference.cache
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\Indexers\Indexers\obj\Debug\Indexers.exe
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\Indexers\Indexers\obj\Debug\Indexers.pdb

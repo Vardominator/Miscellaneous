@@ -1,0 +1,6 @@
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\ValueTypesVSReferenceTypes\ValueTypesVSReferenceTypes\bin\Debug\ValueTypesVSReferenceTypes.exe.config
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\ValueTypesVSReferenceTypes\ValueTypesVSReferenceTypes\bin\Debug\ValueTypesVSReferenceTypes.exe
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\ValueTypesVSReferenceTypes\ValueTypesVSReferenceTypes\bin\Debug\ValueTypesVSReferenceTypes.pdb
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\ValueTypesVSReferenceTypes\ValueTypesVSReferenceTypes\obj\Debug\ValueTypesVSReferenceTypes.csprojResolveAssemblyReference.cache
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\ValueTypesVSReferenceTypes\ValueTypesVSReferenceTypes\obj\Debug\ValueTypesVSReferenceTypes.exe
+C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\ValueTypesVSReferenceTypes\ValueTypesVSReferenceTypes\obj\Debug\ValueTypesVSReferenceTypes.pdb
