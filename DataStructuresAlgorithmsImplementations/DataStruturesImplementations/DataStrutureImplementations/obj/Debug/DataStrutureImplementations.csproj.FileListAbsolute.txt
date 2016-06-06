@@ -4,3 +4,6 @@ C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\DataStrutureImplem
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\DataStrutureImplementations\DataStrutureImplementations\obj\Debug\DataStrutureImplementations.exe
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\DataStrutureImplementations\DataStrutureImplementations\obj\Debug\DataStrutureImplementations.pdb
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\DataStrutureImplementations\DataStrutureImplementations\obj\Debug\DataStrutureImplementations.csprojResolveAssemblyReference.cache
+C:\Users\barse\Desktop\Github\Miscellaneous\DataStructuresAlgorithmsImplementations\DataStruturesImplementations\DataStrutureImplementations\bin\Debug\DataStrutureImplementations.exe.config
+C:\Users\barse\Desktop\Github\Miscellaneous\DataStructuresAlgorithmsImplementations\DataStruturesImplementations\DataStrutureImplementations\obj\Debug\DataStrutureImplementations.exe
+C:\Users\barse\Desktop\Github\Miscellaneous\DataStructuresAlgorithmsImplementations\DataStruturesImplementations\DataStrutureImplementations\obj\Debug\DataStrutureImplementations.pdb

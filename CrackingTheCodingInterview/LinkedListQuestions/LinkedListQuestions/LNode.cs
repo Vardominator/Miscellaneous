@@ -4,13 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStrutureImplementations
+namespace LinkedListQuestions
 {
-
-    /// <summary>
-    /// A general list node that can be used with either a singly
-    ///     linked list or a doubly linked list.
-    /// </summary>
     class LNode<T>
     {
 
@@ -18,7 +13,7 @@ namespace DataStrutureImplementations
         LNode<T> prev;
         T val;
 
-        public LNode<T> Next { get{ return next; } set{ next = value; } }
+        public LNode<T> Next { get { return next; } set { next = value; } }
         public LNode<T> Prev { get { return prev; } set { prev = value; } }
 
         public T Val { get { return val; } set { val = value; } }

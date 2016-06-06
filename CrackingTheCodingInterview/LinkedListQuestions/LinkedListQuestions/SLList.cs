@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStrutureImplementations
+namespace LinkedListQuestions
 {
-
     /// <summary>
     /// Singly Linked list implementation without a tail
     /// </summary>
@@ -18,6 +17,7 @@ namespace DataStrutureImplementations
         LNode<T> head;
         int count;
 
+        public LNode<T> Head { get { return head; } }
         public int Count { get { return count; } }
 
         public SLList()
@@ -32,7 +32,7 @@ namespace DataStrutureImplementations
 
             LNode<T> newNode = new LNode<T>(value);
 
-            if(head.Next == null)
+            if (head.Next == null)
             {
                 head.Next = newNode;
             }
@@ -42,13 +42,13 @@ namespace DataStrutureImplementations
 
                 LNode<T> current = head;
 
-                while(current.Next != null)
+                while (current.Next != null)
                 {
                     current = current.Next;
                 }
 
                 current.Next = newNode;
-            
+
             }
             count++;
 
@@ -64,20 +64,19 @@ namespace DataStrutureImplementations
                 head.Next = newNode;
             }
 
-            
+
             LNode<T> oldFirstNode = head.Next;
 
             head.Next = newNode;
             newNode.Next = oldFirstNode;
 
             count++;
-
         }
 
 
-        public bool isEmpty()
+        public void Remove(T value)
         {
-            return count == 0;
+            
         }
 
         public override string ToString()
