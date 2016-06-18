@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -152,6 +153,12 @@ int main() {
 
 	// The compiler is not looking at the type of object -- in this case Manager --
 	//		but rather the data type of the pointer variable itself to decide what to do.
+
+
+	// Make modyifing the function as virtual the compiler dynamically decides which function
+	// to work with. 
+
+
 
 	return 0;
 }

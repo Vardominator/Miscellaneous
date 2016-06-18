@@ -4,3 +4,9 @@ C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\DelegatesEventsLam
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\DelegatesEventsLambdas\DelegatesEventsLambdas\obj\Debug\DelegatesEventsLambdas.csprojResolveAssemblyReference.cache
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\DelegatesEventsLambdas\DelegatesEventsLambdas\obj\Debug\DelegatesEventsLambdas.exe
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\DelegatesEventsLambdas\DelegatesEventsLambdas\obj\Debug\DelegatesEventsLambdas.pdb
+C:\Users\barse\Desktop\Github\Miscellaneous\AdvancedCSharp\DelegatesEventsLambdas\DelegatesEventsLambdas\bin\Debug\DelegatesEventsLambdas.exe.config
+C:\Users\barse\Desktop\Github\Miscellaneous\AdvancedCSharp\DelegatesEventsLambdas\DelegatesEventsLambdas\obj\Debug\DelegatesEventsLambdas.exe
+C:\Users\barse\Desktop\Github\Miscellaneous\AdvancedCSharp\DelegatesEventsLambdas\DelegatesEventsLambdas\obj\Debug\DelegatesEventsLambdas.pdb
+C:\Users\barse\Desktop\Github\Miscellaneous\AdvancedCSharp\DelegatesEventsLambdas\DelegatesEventsLambdas\bin\Debug\DelegatesEventsLambdas.exe
+C:\Users\barse\Desktop\Github\Miscellaneous\AdvancedCSharp\DelegatesEventsLambdas\DelegatesEventsLambdas\bin\Debug\DelegatesEventsLambdas.pdb
+C:\Users\barse\Desktop\Github\Miscellaneous\AdvancedCSharp\DelegatesEventsLambdas\DelegatesEventsLambdas\obj\Debug\DelegatesEventsLambdas.csprojResolveAssemblyReference.cache

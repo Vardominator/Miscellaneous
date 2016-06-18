@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStrutureImplementations
+namespace DataStruturesImplementations
 {
     class TNode<T>
     {
@@ -27,6 +27,7 @@ namespace DataStrutureImplementations
         public TNode(int key, T value)
         {
             this.value = value;
+            this.key = key;
         }
 
     }

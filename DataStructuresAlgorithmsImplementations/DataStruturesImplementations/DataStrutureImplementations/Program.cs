@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStrutureImplementations
+namespace DataStruturesImplementations
 {
     class Program
     {
@@ -12,28 +12,29 @@ namespace DataStrutureImplementations
         static void Main(string[] args)
         {
 
-            var testList = new DataStrutureImplementations.DLList<string>();
+            BST<int> testTree = new BST<int>();
 
-            testList.AddToEnd("hello");
-            testList.AddToEnd("folks");
-            testList.AddToEnd("what's good");
+            testTree.Insert(testTree, new TNode<int>(5, 5));
+            testTree.Insert(testTree, new TNode<int>(2, 2));
+            testTree.Insert(testTree, new TNode<int>(8, 8));
+            testTree.Insert(testTree, new TNode<int>(1, 1));
+            testTree.Insert(testTree, new TNode<int>(3, 3));
+            testTree.Insert(testTree, new TNode<int>(7, 7));
+            testTree.Insert(testTree, new TNode<int>(10, 10));
 
-            testList.RemoveEnd();
-            testList.RemoveFront();
+            Console.WriteLine("In order traversal:");
+            testTree.InOrderTraverse(testTree.Root);
+            Console.WriteLine();
 
-            Console.WriteLine(testList.ToString());
+            Console.WriteLine("Pre order traversal: ");
+            testTree.PreOrderTraverse(testTree.Root);
+            Console.WriteLine();
 
-
-            var testSList = new DataStrutureImplementations.SLList<string>();
-
-            testSList.AddToEnd("sup");
-            testSList.AddToEnd("player");
-            testSList.AddToEnd("hater");
-
-            Console.WriteLine(testSList.ToString());
-
+            Console.WriteLine("Post order traversal: ");
+            testTree.PostOrderTraverse(testTree.Root);
 
             Console.ReadKey();
+
         }
 
     }

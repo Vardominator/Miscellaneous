@@ -4,3 +4,9 @@ C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\WaterTower\WaterTo
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\WaterTower\WaterTower\obj\Debug\WaterTower.csprojResolveAssemblyReference.cache
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\WaterTower\WaterTower\obj\Debug\WaterTower.exe
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\WaterTower\WaterTower\obj\Debug\WaterTower.pdb
+C:\Users\barse\Desktop\Github\Miscellaneous\MiscellaneousProblems\WaterTower\WaterTower\bin\Debug\WaterTower.exe.config
+C:\Users\barse\Desktop\Github\Miscellaneous\MiscellaneousProblems\WaterTower\WaterTower\obj\Debug\WaterTower.exe
+C:\Users\barse\Desktop\Github\Miscellaneous\MiscellaneousProblems\WaterTower\WaterTower\obj\Debug\WaterTower.pdb
+C:\Users\barse\Desktop\Github\Miscellaneous\MiscellaneousProblems\WaterTower\WaterTower\bin\Debug\WaterTower.exe
+C:\Users\barse\Desktop\Github\Miscellaneous\MiscellaneousProblems\WaterTower\WaterTower\bin\Debug\WaterTower.pdb
+C:\Users\barse\Desktop\Github\Miscellaneous\MiscellaneousProblems\WaterTower\WaterTower\obj\Debug\WaterTower.csprojResolveAssemblyReference.cache

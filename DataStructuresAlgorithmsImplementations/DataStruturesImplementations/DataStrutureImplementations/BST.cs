@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStrutureImplementations
+namespace DataStruturesImplementations
 {
     class BST<T> 
     {
+
+
+        
+
 
         private TNode<T> root;
         private int size;
@@ -27,7 +31,7 @@ namespace DataStrutureImplementations
             return size == 0;
         }
 
-        // Traversal
+        // Depth first search traversals
         #region
         public void InOrderTraverse(TNode<T> root)
         {
@@ -36,6 +40,24 @@ namespace DataStrutureImplementations
                 InOrderTraverse(root.Left);
                 Console.WriteLine(root.Value);
                 InOrderTraverse(root.Right);
+            }
+        }
+        public void PreOrderTraverse(TNode<T> root)
+        {
+            if(root != null)
+            {
+                Console.WriteLine(root.Value);
+                PreOrderTraverse(root.Left);
+                PreOrderTraverse(root.Right);
+            }
+        }
+        public void PostOrderTraverse(TNode<T> root)
+        {
+            if(root != null)
+            {
+                PostOrderTraverse(root.Left);
+                PostOrderTraverse(root.Right);
+                Console.WriteLine(root.Value);
             }
         }
         #endregion
@@ -131,28 +153,32 @@ namespace DataStrutureImplementations
             
             TNode<T> current = tree.Root;
 
-            while(current != null)
-            {
-                
-                if(newNode.Key < current.Key)
-                {
-                    current = current.Left;
-                }
-                else
-                {
-                    current = current.Right;
-                }
-
-            }
-
-            // Set the parent
-            newNode.Parent = current;
-
             if(current == null)
             {
-                tree.Root = current;
+                tree.Root = newNode;
+                newNode.Parent = null;
+                size++;
+                return;
             }
-            else if(newNode.Key < current.Key)
+            else
+            {
+                while(current.Left != null && current.Right != null)
+                {
+                    if(newNode.Key < current.Key)
+                    {
+                        current = current.Left;
+                    }
+                    else
+                    {
+                        current = current.Right;
+                    }
+                }
+            }
+
+
+            newNode.Parent = current;
+
+            if(newNode.Key < current.Key)
             {
                 current.Left = newNode;
             }
@@ -160,6 +186,8 @@ namespace DataStrutureImplementations
             {
                 current.Right = newNode;
             }
+
+            size++;
 
         }
 

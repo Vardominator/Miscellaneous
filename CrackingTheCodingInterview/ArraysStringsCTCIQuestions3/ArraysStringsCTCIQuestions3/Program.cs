@@ -61,7 +61,7 @@ namespace ArraysStringsCTCIQuestions3
         public static void RotateMatrix(int[,] matrix)
         {
 
-            int width = 4;
+            int width = matrix.Length;
 
             for (int i = 0; i < width/2; i++)
             {

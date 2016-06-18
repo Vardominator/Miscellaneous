@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph", "Graph\Graph.csproj", "{EFF58F2F-1F31-4D2C-B00D-0B63AA3B5A45}"
+EndProject
+Project("{DA7A21FA-8162-4350-AD77-A8D1B671F3ED}") = "JohnHopkinsTutorial", "..\..\..\..\..\OneDrive\Documents\Visual Studio 2015\Projects\JohnHopkinsTutorial\JohnHopkinsTutorial\JohnHopkinsTutorial.rxproj", "{275CF9F4-4F69-4DF4-99C2-FA0A64B6DF5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFF58F2F-1F31-4D2C-B00D-0B63AA3B5A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFF58F2F-1F31-4D2C-B00D-0B63AA3B5A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFF58F2F-1F31-4D2C-B00D-0B63AA3B5A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFF58F2F-1F31-4D2C-B00D-0B63AA3B5A45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

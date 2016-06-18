@@ -11,7 +11,7 @@ namespace WaterTower
         static void Main(string[] args)
         {
             
-            int[] towers = { 4,3,2,1,2,3,4};
+            int[] towers = { 1,5,3,7,2};
             
             int currentMinimum = towers[0];
             

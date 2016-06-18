@@ -31,5 +31,10 @@ namespace LinkedListQuestions
             prev = null;
         }
 
+        public override string ToString()
+        {
+            return val.ToString();
+        }
+
     }
 }

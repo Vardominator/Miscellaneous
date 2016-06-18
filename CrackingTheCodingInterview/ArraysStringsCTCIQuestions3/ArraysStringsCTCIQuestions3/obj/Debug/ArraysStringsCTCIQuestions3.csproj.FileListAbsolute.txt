@@ -4,3 +4,6 @@ C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\ArraysStringsCTCIQ
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\ArraysStringsCTCIQuestions3\ArraysStringsCTCIQuestions3\obj\Debug\ArraysStringsCTCIQuestions3.csprojResolveAssemblyReference.cache
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\ArraysStringsCTCIQuestions3\ArraysStringsCTCIQuestions3\obj\Debug\ArraysStringsCTCIQuestions3.exe
 C:\Users\barse\OneDrive\Documents\Visual Studio 2015\Projects\ArraysStringsCTCIQuestions3\ArraysStringsCTCIQuestions3\obj\Debug\ArraysStringsCTCIQuestions3.pdb
+C:\Users\barse\Desktop\Github\Miscellaneous\CrackingTheCodingInterview\ArraysStringsCTCIQuestions3\ArraysStringsCTCIQuestions3\bin\Debug\ArraysStringsCTCIQuestions3.exe.config
+C:\Users\barse\Desktop\Github\Miscellaneous\CrackingTheCodingInterview\ArraysStringsCTCIQuestions3\ArraysStringsCTCIQuestions3\obj\Debug\ArraysStringsCTCIQuestions3.exe
+C:\Users\barse\Desktop\Github\Miscellaneous\CrackingTheCodingInterview\ArraysStringsCTCIQuestions3\ArraysStringsCTCIQuestions3\obj\Debug\ArraysStringsCTCIQuestions3.pdb

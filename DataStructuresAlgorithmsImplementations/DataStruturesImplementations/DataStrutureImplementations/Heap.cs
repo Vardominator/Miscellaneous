@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStrutureImplementations
+namespace DataStruturesImplementations
 {
     class Heap
     {
@@ -110,6 +110,7 @@ namespace DataStrutureImplementations
 
         public void MinHeapify(int[] A, int i)
         {
+
             int leftIndex = Left(i);
             int rightIndex = Right(i);
             int smallest;
@@ -135,7 +136,6 @@ namespace DataStrutureImplementations
                 A[smallest] = temp;
                 MinHeapify(A, smallest);
             }
-
 
         }
 

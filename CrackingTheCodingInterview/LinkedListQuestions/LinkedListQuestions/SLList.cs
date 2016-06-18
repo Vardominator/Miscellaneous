@@ -18,7 +18,7 @@ namespace LinkedListQuestions
         int count;
 
         public LNode<T> Head { get { return head; } }
-        public int Count { get { return count; } }
+        public int Count { get { return count; } set { count = value; } }
 
         public SLList()
         {
@@ -54,16 +54,36 @@ namespace LinkedListQuestions
 
         }
 
-        public void AddToFront(T value)
+        public void AddToEnd(LNode<T> newNode)
         {
 
-            LNode<T> newNode = new LNode<T>(value);
-
-            if (head.Next == null)
+            if(head.Next == null)
             {
                 head.Next = newNode;
             }
 
+            else
+            {
+                LNode<T> current = head;
+
+                while(current.Next != null)
+                {
+                    current = current.Next;
+                }
+                current.Next = newNode;
+            }
+
+        }
+
+        public void AddToFront(T value)
+        {
+
+            LNode<T> newNode = new LNode<T>(value);
+            
+            if (head.Next == null)
+            {
+                head.Next = newNode;
+            }
 
             LNode<T> oldFirstNode = head.Next;
 
@@ -71,6 +91,23 @@ namespace LinkedListQuestions
             newNode.Next = oldFirstNode;
 
             count++;
+
+        }
+
+        public void AddToFront(LNode<T> newNode)
+        {
+     
+            if(head.Next == null)
+            {
+                head.Next = newNode;
+            }
+
+            LNode<T> oldFirstNode = head.Next;
+            head.Next = newNode;
+            newNode.Next = oldFirstNode;
+
+            count++;
+
         }
 
 
@@ -84,7 +121,7 @@ namespace LinkedListQuestions
 
             LNode<T> current = head.Next;
             string list = "";
-            while (current.Next != null)
+             while (current.Next != null)
             {
                 list += current.Val + " ";
                 current = current.Next;
