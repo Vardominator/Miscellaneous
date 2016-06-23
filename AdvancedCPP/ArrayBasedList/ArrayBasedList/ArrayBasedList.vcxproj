@@ -146,6 +146,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="UnsortedType.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UnsortedType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
