@@ -7,20 +7,16 @@ using System.Threading.Tasks;
 namespace DataStruturesImplementations
 {
 
-    /// <summary>
-    /// Singly Linked list implementation without a tail
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
 
-    class SLList<T>
+    class SinglyLinkedList<T>
     {
 
         LNode<T> head;
         int count;
 
-        public int Count { get { return count; } }
+        public int Count { get; }
 
-        public SLList()
+        public SinglyLinkedList()
         {
             head = new LNode<T>();
             head.Next = null;
@@ -75,11 +71,70 @@ namespace DataStruturesImplementations
         }
 
 
-        public bool isEmpty()
+
+        public void RemoveFromFront()
         {
-            return count == 0;
+            if(IsEmpty())
+            {
+                throw new NullReferenceException("List is empty.");
+            }
+            head.Next = head.Next.Next;
+            count--;
         }
 
+        public void RemoveFromEnd()
+        {
+            if(IsEmpty())
+            {
+                throw new NullReferenceException("List is empty.");
+            }
+            LNode<T> current = head.Next;
+            while(current.Next.Next != null)
+            {
+                current = current.Next;
+            }
+            current.Next = null;
+            count--;
+        }
+
+    
+        public void RemoveAt(int position)
+        {
+            if (IsEmpty())
+            {
+                throw new NullReferenceException("List is empty.");
+            }
+            else if(position > count - 1)
+            {
+                throw new ArgumentOutOfRangeException("Input position exceeds list count.");
+            }
+
+            if (position == 0)
+            {
+                RemoveFromFront();
+            }
+            else if (position == count - 1)
+            {
+                RemoveFromEnd();
+            }
+            else
+            {
+                LNode<T> current = head.Next;
+                for (int i = 0; i < position - 1; i++)
+                {
+                    current = current.Next;
+                }
+                current.Next = current.Next.Next;
+            }
+        }
+
+
+        public bool IsEmpty()
+        {
+            return head.Next == null;
+        }
+
+        
         public override string ToString()
         {
 

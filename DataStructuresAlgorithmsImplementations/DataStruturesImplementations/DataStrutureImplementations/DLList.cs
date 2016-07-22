@@ -26,8 +26,7 @@ namespace DataStruturesImplementations
             head.Next = tail;
             tail.Prev = head;
         }
-
-
+        
         public void AddToEnd(T value)
         {
 
@@ -87,6 +86,8 @@ namespace DataStruturesImplementations
             newLastNode.Next = tail;
             tail.Prev = newLastNode;
 
+            count--;
+
             return nodeToRemove;
 
         }
@@ -105,14 +106,93 @@ namespace DataStruturesImplementations
             newFirstNode.Prev = head;
             head.Next = newFirstNode;
 
+            count--;
+
             return nodeToRemove;
 
         }
 
-        public void Remove(T vlaue)
+        public void RemoveAt(int position)
         {
-            throw new NotImplementedException("Don't be lazy, you fuck");
+            if (position < 0 || position > count - 1)
+            {
+                throw new ArgumentOutOfRangeException("Input position is out of range.");
+            }
+            if(position == 0)
+            {
+                RemoveFront();
+                return;
+            }
+            else if(position == count - 1)
+            {
+                RemoveEnd();
+                return;
+            }
+            
+            LNode<T> currentLeft = head.Next;
+            LNode<T> currentRight;
+            for (int i = 0; i < position - 1; i++)
+            {
+                currentLeft = currentLeft.Next;
+            }
+            currentRight = currentLeft.Next.Next;
+
+            currentLeft.Next = currentRight;
+            currentRight.Prev = currentLeft;
+
+            count--;
         }
+
+
+
+
+
+        public void AddAt(int position, T value)
+        {
+            if(position < 0 || position > count - 1)
+            {
+                throw new NullReferenceException("Input position is out of range.");
+            }
+            else if(position == 0)
+            {
+                AddToFront(value);
+                return;
+            }
+            else if(position == count - 1)
+            {
+                AddToEnd(value);
+                return;
+            }
+
+            LNode<T> newNode = new LNode<T>(value);
+            if (head.Next == tail)
+            {
+                head.Next = newNode;
+                newNode.Prev = head;
+                newNode.Next = tail;
+                tail.Prev = newNode;
+            }
+            else
+            {
+                LNode<T> currentLeft = head.Next;
+                LNode<T> currentRight;
+                for (int i = 0; i < position - 1; i++)
+                {
+                    currentLeft = currentLeft.Next;
+                }
+                currentRight = currentLeft.Next;
+
+                currentLeft.Next = newNode;
+                newNode.Prev = currentLeft;
+                newNode.Next = currentRight;
+                currentRight.Prev = newNode;
+            }
+            count++;
+        }
+
+
+
+
 
         public bool isEmpty()
         {

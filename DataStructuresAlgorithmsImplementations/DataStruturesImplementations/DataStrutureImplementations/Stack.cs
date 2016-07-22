@@ -8,33 +8,30 @@ namespace DataStruturesImplementations
 {
     class Stack<T>
     {
-
         int count;
         SNode<T> first;
 
+        public int Count { get { return count; } }
+
         public Stack()
         {
-
             first = null;
             count = 0;
         }
 
         public void Push(T value)
         {
-
             SNode<T> oldFirst = first;
             first = new SNode<T>();
             first.Val = value;
             first.Next = oldFirst;
 
-            Count++;
-
+            count++;
         }
 
         public T Pop()
         {
-
-            if (isEmpty())
+            if (IsEmpty())
             {
                 throw new NullReferenceException("Stack is empty");
             }
@@ -44,30 +41,14 @@ namespace DataStruturesImplementations
             count--;
 
             return poppedValue;
-
         }
 
         public T Peek()
         {
             return first.Val;
         }
-
-
-
-        public int Count
-        {
-            get
-            {
-                return count;
-            }
-            set
-            {
-                count = value;
-            }
-        }
-
-
-        public Boolean isEmpty()
+        
+        public bool IsEmpty()
         {
             return first == null;
         }
