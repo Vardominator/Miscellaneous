@@ -8,154 +8,80 @@ namespace Graph
 {
 
     /// <summary>
-    /// Implementation of an integer, unweighted, undirected graph data structure
-    /// 
-    /// Searching algorithms implemented:
-    ///     Breadth-first search
-    ///     Depth-first search
+    /// Implementation of a generic, unweighted, undirected graph
     /// </summary>
-
-    class UndirectedGraph
+    class UndirectedGraph<T>
     {
+        List<Vertex<T>> vertices;
 
-        // An array of lists containing the nodes for each vertex of the graph
-        private List<int>[] vertices;
+        public List<Vertex<T>> Vertices { get { return vertices; } }
+        public int Size { get { return vertices.Count; }}
 
-        int size;
-
-        bool[] visited;
-
-        public List<int>[] Vertices { get { return vertices; } }
-        public int Size { get { return vertices.Length; } }
-
-
-        public UndirectedGraph(int initialSize)
+        public UndirectedGraph(List<Vertex<T>> initialVertices)
         {
+            vertices = initialVertices;
+        }
 
-            if (size < 0)
+        public void AddPair(Vertex<T> vertexA, Vertex<T> vertexB)
+        {
+            vertexA.AddEdge(vertexB);
+            vertexB.AddEdge(vertexA);
+        }
+        public void AddVertex(Vertex<T> vertex)
+        {
+            vertices.Add(vertex);
+        }
+        public void RemoveVertex(Vertex<T> vertex)
+        {
+            vertices.Remove(vertex);
+        }
+        public bool HasVertex(Vertex<T> vertex)
+        {
+            return vertices.Contains(vertex);
+        }
+
+        public void DepthFirstTraverse(Vertex<T> root)
+        {
+            if (!root.IsVisited)
             {
-                throw new ArgumentException("Number of vertices cannot be negative");
-            }
+                Console.WriteLine(root.Value);
+                root.Visit();
 
-            size = initialSize;
-            vertices = new List<int>[size];
-            visited = new bool[size];
-
-            for(int i = 0; i < size; i++)
-            {
-                vertices[i] = new List<int>();
-            }
-            
-        }
-
-        public UndirectedGraph(List<int>[] initialNodes)
-        {
-            vertices = initialNodes;
-            size = vertices.Length;
-            visited = new bool[initialNodes.Length];
-        }
-
-
-        // Adds an edge to a given node
-        public void AddEdge(int index, int value)
-        {
-            vertices[index].Add(value);
-        }
-
-        // Removes an edge from a given node
-        public void RemoveEdge(int index, int value)
-        {
-            vertices[index].Remove(value);
-            size--;
-        }
-
-        // Indicites whether a given Node has an edge to a given node
-        public bool HasEdge(int index, int value)
-        {
-            return vertices[index].Contains(value);
-        }
-
-        // Searches the graph recursively in a depth first manner
-        public void DepthFirstSearch(int root)
-        {
-            if (!visited[root])
-            {
-                Console.Write(root + " ");
-                visited[root] = true;
-                foreach(int neighbor in GetSuccessors(root))
+                foreach(Vertex<T> neighbor in root.Neighbors)
                 {
-                    DepthFirstSearch(neighbor);
+                    DepthFirstTraverse(neighbor);
                 }
             }
-            
         }
-
-        // Searches the graph using a Queue in a breadth first manner
-        public void BreadthFirstSearch(int root)
+        public void BreadthFirstTraverse(Vertex<T> root)
         {
+            Queue<Vertex<T>> queue = new Queue<Vertex<T>>();
+            Console.WriteLine(root.Value);
 
-            Queue<int> queue = new Queue<int>();
-            visited[root] = true;
-
+            root.Visit();
             queue.Enqueue(root);
 
             while(queue.Count > 0)
             {
-                int current = queue.Dequeue();
-
-                foreach(int neighbor in GetSuccessors(current))
+                Vertex<T> current = queue.Dequeue();
+                foreach (Vertex<T> neighbor in current.Neighbors)
                 {
-
-                    if (!visited[neighbor])
+                    if (!neighbor.IsVisited)
                     {
-                        Console.Write(neighbor + " ");
-                        visited[neighbor] = true;
+                        Console.WriteLine(neighbor.Value);
+                        neighbor.Visit();
                         queue.Enqueue(neighbor);
                     }
-
                 }
-
             }
-            
         }
 
-
-        public override string ToString()
+        public void ResetVisits()
         {
-
-            StringBuilder graphStructure = new StringBuilder("");
-
-            for(int i = 0; i < vertices.Length; i++)
+            foreach (Vertex<T> vertex in vertices)
             {
-                graphStructure.Append(i + ": ");
-                for(int j = 0; j < vertices[i].Count; j++)
-                {
-                    graphStructure.Append(vertices[i][j] + " ");
-                }
-                graphStructure.Append("\n");
-            }
-
-            return graphStructure.ToString();
-
-        }
-
-        public IList<int> GetSuccessors(int vertexIndex)
-        {
-            return vertices[vertexIndex];
-        }
-
-        public bool IsVisited(int vertex)
-        {
-            return visited[vertex];
-        }
-
-        public void ResetVisited()
-        {
-            for(int i = 0; i < visited.Length; i++)
-            {
-                visited[i] = false;
+                vertex.IsVisited = false;
             }
         }
-
     }
 }

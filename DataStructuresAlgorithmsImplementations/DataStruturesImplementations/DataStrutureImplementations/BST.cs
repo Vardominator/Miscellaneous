@@ -9,27 +9,18 @@ namespace DataStruturesImplementations
     class BST<T> 
     {
 
-
-        
-
-
         private TNode<T> root;
         private int size;
-        private int depth;
 
         public TNode<T> Root { get { return root; } set { root = value; } }
         public int Size { get { return size; } }
-        public int Depth { get { return depth; } }
 
         public BST()
         {
             root = null;
+            size = 0;
         }
 
-        public bool isEmpty()
-        {
-            return size == 0;
-        }
 
         // Depth first search traversals
         #region
@@ -60,6 +51,28 @@ namespace DataStruturesImplementations
                 Console.WriteLine(root.Value);
             }
         }
+        public void LevelOrderTraverse(TNode<T> root)
+        {
+            Queue<TNode<T>> queue = new Queue<TNode<T>>();
+            queue.Enqueue(root);
+
+            while (queue.Count > 0)
+            {
+                TNode<T> node = queue.Dequeue();
+
+                if(node.Left != null)
+                {
+                    queue.Enqueue(node.Left);
+                }
+                if(node.Right != null)
+                {
+                    queue.Enqueue(node.Right);
+                }
+
+                Console.WriteLine(node.Value);
+            }
+        }
+
         #endregion
 
         // Search
@@ -70,7 +83,6 @@ namespace DataStruturesImplementations
             {
                 return root;
             }
-
             if(key < root.Key)
             {
                 return Search(root.Left, key);
@@ -79,7 +91,6 @@ namespace DataStruturesImplementations
             {
                 return Search(root.Right, key);
             }
-
         }
 
         public TNode<T> IterativeSearch(TNode<T> root, int key)
@@ -90,7 +101,7 @@ namespace DataStruturesImplementations
             // current nodes key: if it is, then traverse left; if it isn't then
             // traverse rigth.  Repeat until key is found.
            
-            while(root != null && key != root.Key)
+            while(root != null && root.Key != key)
             {
                 if(key < root.Key)
                 {
@@ -148,14 +159,14 @@ namespace DataStruturesImplementations
 
         // Insertion and deletion
         #region
-        public void Insert(BST<T> tree, TNode<T> newNode)
+        public void Insert(TNode<T> newNode)
         {
             
-            TNode<T> current = tree.Root;
+            TNode<T> current = root;
 
             if(current == null)
             {
-                tree.Root = newNode;
+                root = newNode;
                 newNode.Parent = null;
                 size++;
                 return;
@@ -174,8 +185,7 @@ namespace DataStruturesImplementations
                     }
                 }
             }
-
-
+            
             newNode.Parent = current;
 
             if(newNode.Key < current.Key)
@@ -188,19 +198,18 @@ namespace DataStruturesImplementations
             }
 
             size++;
-
         }
 
         // In order to move subtrees around within a tree, we define this method
         // to replace one subtree as a child of its parent with another subtree
-        public void Replace(BST<T> tree, TNode<T> nodeA, TNode<T> nodeB)
+        public void Replace(TNode<T> nodeA, TNode<T> nodeB)
         {
 
             // The parent of the node to be replaced is null,
             // then set the root of the tree to be that node
             if(nodeA.Parent == null)
             {
-                tree.Root = nodeA;
+                root = nodeB;
             }
             else if(nodeA == nodeA.Parent.Left)
             {
@@ -218,7 +227,7 @@ namespace DataStruturesImplementations
         }
 
 
-        public void Delete(BST<T> tree, TNode<T> nodeD)
+        public void Delete(TNode<T> nodeD)
         {
             ///
             /// If nodeD has no children, remove it by modifying its parent to replace
@@ -245,11 +254,11 @@ namespace DataStruturesImplementations
             }
             else if(nodeD.Left == null)
             {
-                Replace(tree, nodeD, nodeD.Right);
+                Replace(nodeD, nodeD.Right);
             }
             else if(nodeD.Right == null)
             {
-                Replace(tree, nodeD, nodeD.Left);
+                Replace(nodeD, nodeD.Left);
             }
             else
             {
@@ -260,14 +269,14 @@ namespace DataStruturesImplementations
                 if(S.Parent != nodeD)
                 {
                     // Place the right child of the spliced child in the spliced child's spot
-                    Replace(tree, S, S.Right);
+                    Replace(S, S.Right);
                     // Place the right child of the spliced child to be deleted node's right child
                     S.Right = nodeD.Right;
                     // Set the parent of the right child of the spliced child to be the spliced child
                     S.Right.Parent = S;
                 }
                 // Now placed the spliced child into the delected node's location
-                Replace(tree, nodeD, S);
+                Replace(nodeD, S);
                 // Set the left of the spliced child to be the left of the delected node
                 S.Left = nodeD.Left;
                 // Set the parent of the left of the spliced child to be the spliced child
@@ -277,6 +286,11 @@ namespace DataStruturesImplementations
 
         }
         #endregion
+
+        public bool IsEmpty()
+        {
+            return root == null;
+        }
 
     }
 }

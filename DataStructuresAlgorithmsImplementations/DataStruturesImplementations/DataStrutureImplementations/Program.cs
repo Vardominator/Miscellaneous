@@ -13,57 +13,20 @@ namespace DataStruturesImplementations
         {
 
 
-            SinglyLinkedList<int> testList = new SinglyLinkedList<int>();
-            testList.AddToEnd(1);
-            testList.AddToEnd(2);
-            testList.AddToEnd(10);
-            testList.AddToEnd(15);
-            testList.AddToEnd(25);
+            TNode<int> node1 = new TNode<int>(25, 25);
+            var node2 = new TNode<int>(5, 5);
+            var node3 = new TNode<int>(50, 50);
+            var node4 = new TNode<int>(12, 12);
 
-            testList.RemoveFromEnd();
-            //testList.RemoveAt(3);
+            BST<int> bst = new BST<int>();
 
-            //Console.WriteLine(testList);
+            bst.Insert(node1);
+            bst.Insert(node2);
+            bst.Insert(node3);
+            bst.Insert(node4);
 
+            bst.LevelOrderTraverse(bst.Root);
 
-
-            DLList<int> testDList = new DLList<int>();
-            for (int i = 0; i < 10; i++)
-            {
-
-                testDList.AddToEnd(i);
-
-            }
-
-            Console.WriteLine(testDList);
-            //testDList.AddToFront(55);
-            testDList.AddAt(2, 25);
-            Console.WriteLine(testDList);
-            testDList.RemoveAt(4);
-            Console.WriteLine(testDList);
-
-            BST<int> testTree = new BST<int>();
-
-            testTree.Insert(testTree, new TNode<int>(5, 5));
-            testTree.Insert(testTree, new TNode<int>(2, 2));
-            testTree.Insert(testTree, new TNode<int>(8, 8));
-            testTree.Insert(testTree, new TNode<int>(1, 1));
-            testTree.Insert(testTree, new TNode<int>(3, 3));
-            testTree.Insert(testTree, new TNode<int>(7, 7));
-            testTree.Insert(testTree, new TNode<int>(10, 10));
-
-            //Console.WriteLine("In order traversal:");
-            //testTree.InOrderTraverse(testTree.Root);
-            //Console.WriteLine();
-
-            //Console.WriteLine("Pre order traversal: ");
-            //testTree.PreOrderTraverse(testTree.Root);
-            //Console.WriteLine();
-
-            //Console.WriteLine("Post order traversal: ");
-            //testTree.PostOrderTraverse(testTree.Root);
-
-            Console.ReadKey();
 
         }
 

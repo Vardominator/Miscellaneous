@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,79 +9,78 @@ namespace Graph
 {
     class Program
     {
+
+        static List<Vertex<string>> vertices = new List<Vertex<string>>();
+        static List<WeightedEdge<string>> weightedEdges = new List<WeightedEdge<string>>();
+
+        static StreamReader cityNetworkFile = 
+            cityNetworkFile = new StreamReader(
+                @"C:\Users\barse\Desktop\Github\Miscellaneous\DataStructuresAlgorithmsImplementations2\Graph\Graph\citynetworkweights.txt");
+
+
         static void Main(string[] args)
         {
 
-            List<int>[] nodes = new List<int>[]
-            {
-                new List<int>() {1, 2 },
-                new List<int>() {0 },
-                new List<int>() {0 }
-            };
-            
+            LoadVertices();
 
-            UndirectedGraph testGraphInt = new UndirectedGraph(nodes);
-
-            testGraphInt.DepthFirstSearch(0);
-            
-            // Create a list of vertices using the Vertex<T> class
-            List<Vertex<string>> vertices = new List<Vertex<string>>
-            (
-                new Vertex<string> []
-                    {
-                    new Vertex<string>("Los Angeles"),
-                    new Vertex<string>("San Francisco"),
-                    new Vertex<string>("Las Vegas"),
-                    new Vertex<string>("Seattle"),
-                    new Vertex<string>("Austin"),
-                    new Vertex<string>("Portland")
-                    }
-            );
-
-            // Establish edges; Ex. Los Angeles -> San Francisco, Las Vegas, Portland
-            vertices[0].AddEdges(new List<Vertex<string>>(new Vertex<string>[] 
-            {
-                vertices[1], vertices[2], vertices[5]
-            }));
-
-            vertices[1].AddEdges(new List<Vertex<string>>(new Vertex<string>[]
-            {
-                vertices[0], vertices[3], vertices[5]
-            }));
-
-            vertices[2].AddEdges(new List<Vertex<string>>(new Vertex<string>[]
-            {
-                vertices[0], vertices[1], vertices[4]
-            }));
-            
-            vertices[3].AddEdges(new List<Vertex<string>>(new Vertex<string>[]
-            {
-                vertices[1], vertices[5]
-            }));
-
-            vertices[4].AddEdges(new List<Vertex<string>>(new Vertex<string>[]
-            {
-                vertices[2]
-            }));
-            
-            vertices[5].AddEdges(new List<Vertex<string>>(new Vertex<string>[]
-            {
-                vertices[1], vertices[3]
-            }));
-
-            // Create graph using the UndirectedGenericGraph<T> class
-            UndirectedGenericGraph<string> testGraph = new UndirectedGenericGraph<string>(vertices);
-
-            // Check to see that all neighbors are properly set up
-            foreach(Vertex<string> vertex in vertices)
+            foreach (Vertex<string> vertex in vertices)
             {
                 Console.WriteLine(vertex.ToString());
             }
-
-            // Test searching algorithms
-            testGraph.DepthFirstSearch(vertices[0]);
-            //testGraph.BreadthFirstSearch(vertices[0]);
-
+            
+            Console.WriteLine();
         }
+
+        static void AddItemsToList<T>(List<T> toList, params T[] values)
+        {
+            toList.AddRange(values);
+        }
+
+        static void LoadVertices()
+        {
+
+            string currentLine = cityNetworkFile.ReadLine();
+            string[] cityAndNeighbors;
+
+            while(currentLine != null)
+            {
+                cityAndNeighbors = currentLine.Split(':');
+
+                CreateEdges(cityAndNeighbors);
+
+                currentLine = cityNetworkFile.ReadLine();
+            }
+            
+        }
+
+        static void CreateEdges(string[] cityAndNeighbors)
+        {
+            Vertex<string> currentCity = new Vertex<string>(cityAndNeighbors[0]);
+
+            vertices.Add(currentCity);
+
+
+            if (cityAndNeighbors[1] != "")
+            {
+                string neighbors = cityAndNeighbors[1];
+                string[] neighborsWithWeights = neighbors.Split(';');
+
+                foreach (string neighborAndWeight in neighborsWithWeights)
+                {
+
+                    string[] neighbor = neighborAndWeight.Split(',');
+
+                    Vertex<string> endpoint = new Vertex<string>(neighbor[0]);
+                    int weight = int.Parse(neighbor[1]);
+
+                    WeightedEdge<string> edge = new WeightedEdge<string>(currentCity, endpoint, weight);
+
+                    weightedEdges.Add(edge);
+
+                }
+
+            }
+        }
+
     }
 }

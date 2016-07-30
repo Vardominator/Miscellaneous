@@ -8,7 +8,6 @@ namespace DataStruturesImplementations
 {
     class TNode<T>
     {
-
         private int key;
         public int Key { get { return key; } set { key = value; } }
 
@@ -29,6 +28,5 @@ namespace DataStruturesImplementations
             this.value = value;
             this.key = key;
         }
-
     }
 }

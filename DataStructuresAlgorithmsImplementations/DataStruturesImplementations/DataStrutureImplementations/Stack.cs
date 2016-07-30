@@ -22,8 +22,7 @@ namespace DataStruturesImplementations
         public void Push(T value)
         {
             SNode<T> oldFirst = first;
-            first = new SNode<T>();
-            first.Val = value;
+            first = new SNode<T>(value);
             first.Next = oldFirst;
 
             count++;
@@ -51,6 +50,29 @@ namespace DataStruturesImplementations
         public bool IsEmpty()
         {
             return first == null;
+        }
+
+        public override string ToString()
+        {
+            string queueString = "[";
+
+            if (IsEmpty())
+            {
+                return "[]";
+            }
+
+            SNode<T> current = first;
+
+            while(current.Next != null)
+            {
+                queueString += current.Val.ToString() + " ";
+                current = current.Next;
+            }
+
+            queueString += current.Val.ToString();
+            queueString += "]";
+
+            return queueString;
         }
 
     }

@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UndirectedGenericGraph.cs" />
+    <Compile Include="DirectedGraph.cs" />
+    <Compile Include="WeightedGraph.cs" />
+    <Compile Include="WeightedEdge.cs" />
     <Compile Include="UndirectedGraph.cs" />
     <Compile Include="Vertex.cs" />
     <Compile Include="Program.cs" />
@@ -51,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="citynetwork.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="citynetworkweights.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

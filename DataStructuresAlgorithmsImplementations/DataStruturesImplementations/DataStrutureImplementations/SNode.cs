@@ -11,11 +11,12 @@ namespace DataStruturesImplementations
         private T val;
         private SNode<T> next;
 
-        public T Val { get; set; }
-        public SNode<T> Next { get; set; }
+        public T Val { get { return val; } set { val = value; } }
+        public SNode<T> Next { get { return next; } set { next = value; } }
 
-        public SNode()
+        public SNode(T value)
         {
+            val = value;
             next = null;
         }
     }

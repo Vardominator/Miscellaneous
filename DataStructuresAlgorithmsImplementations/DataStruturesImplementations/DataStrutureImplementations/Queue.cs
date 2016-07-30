@@ -22,71 +22,59 @@ namespace DataStruturesImplementations
 
         int count;                      // Number of elemtents on queue
 
+        public int Count { get { return count; } }
+
         QNode<T> first;
         QNode<T> last;
 
-
-
+        
         public Queue()
         {
-
             first = null;
             last = null;
-            Count = 0;
-            
+            count = 0;
         }
 
         public void Enqueue(T value)
         {
+            QNode<T> oldLast = last;   
+            last = new QNode<T>(value);
 
-            QNode<T> oldLast = last;    // Set the old last to a temp      
-            last = new QNode<T>();      // Add new node to the end
-            last.Val = value;           // Set its value
-            last.Next = null;           // Set its next as null
-
-
-            if (isEmpty())
+            if (IsEmpty())
             {
-                // If the queue is empty, make first and last point to
-                // the same node
                 first = last;           
             }
             else
             {
-                // Make the previous last point to the new item
                 oldLast.Next = last;
             }
-            Count++;
-
+            count++;
         }
 
         public T Dequeue()
         {
-
-            if (isEmpty())
+            if (IsEmpty())
             {
                 throw new NullReferenceException("Queue is empty");
             }
 
-            T value = first.Val;        // Value to dequeue is the first value in the queue
-            first = first.Next;         // Set the first node equal to the next of the first
-            Count--;
+            T value = first.Val;       
+            first = first.Next;         
+            count--;
 
-            if (isEmpty())
+            if (IsEmpty())
             {
                 last = null;
             }
 
             return value;
-
         }
 
-        public override String ToString()
+        public override string ToString()
         {
+            string queueString = "[";
 
-            String queueString = "[";
-
-            if (isEmpty())
+            if (IsEmpty())
             {
                 return "[]";
             }
@@ -103,27 +91,9 @@ namespace DataStruturesImplementations
             queueString += "]";
 
             return queueString;
-
         }
-
-        public int Count
-        {
-            get
-            {
-                return count;
-            }
-            set
-            {
-                count = value;
-            }
-        }
-
-        public int size()
-        {
-            return Count;
-        }
-
-        public Boolean isEmpty()
+        
+        public bool IsEmpty()
         {
             return first == null;
         }

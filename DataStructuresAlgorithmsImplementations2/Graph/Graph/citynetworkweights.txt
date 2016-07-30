@@ -1,0 +1,14 @@
+Los Angeles:San Francisco,1;Las Vegas,1;Austin,1;Mexico City,1
+San Francisco:Los Angeles,1;Las Vegas,1;Portland,1
+Portland:Seattle,1;Minneapolis,1
+Seattle:Toronto,1;Minneapolis,1
+Las Vegas:San Francisco,1;Los Angeles,1;Austin,1
+Minneapolis:Seattle,1,;Toronto,1;Las Vegas,1;Portland,1
+Toronto:Seattle,1;Minneapolis,1;Washington D.C.,1
+Austin:Boston,1;Miami,1
+Washington D.C.:Toronto,1;New York City,1;Boston,1
+New York City:Washington D.C.,1;Boston,1
+Boston:New York City,1;Washington D.C,1
+Miami:
+Toronto:Seattle,1;Minneapolis,1;Washington D.C.,1
+Mexico City:Los Angeles,1;Austin,1

@@ -9,38 +9,30 @@ namespace DataStruturesImplementations
     
     class QNode<T>
     {    
-
         private T val;
         private QNode<T> next;
 
-        public QNode()
+        public QNode<T> Next { get { return next; } set { next = value; } }
+        public T Val { get { return val; } set { val = value; } }
+
+        public QNode(T value)
         {
+            val = value;
             next = null;
         }
-
-        public T Val
-        {
-            get
-            {
-                return val;
-            }
-            set
-            {
-                val = value;
-            }
-        }
-
-        public QNode<T> Next
-        {
-            get
-            {
-                return next;
-            }
-            set
-            {
-                next = value;
-            }
-        }
-
     }
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
