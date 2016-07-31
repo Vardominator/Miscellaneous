@@ -119,9 +119,10 @@ namespace DataStruturesImplementations
 
         public TNode<T> Successor(TNode<T> root)
         {
+
             if(root.Right != null)
             {
-                return Successor(root.Right);
+                return Minimum(root.Right);
             }
 
             TNode<T> parent = root.Parent;
@@ -132,6 +133,24 @@ namespace DataStruturesImplementations
             }
             return parent;
 
+        }
+
+        public TNode<T> Predecessor(TNode<T> root)
+        {
+
+            if(root.Left != null)
+            {
+                return Maximum(root.Left);
+            }
+
+            TNode<T> parent = root.Parent;
+            while(parent != null & root == parent.Left)
+            {
+                root = parent;
+                parent = parent.Parent;
+            }
+
+            return parent;
 
         }
         #endregion
