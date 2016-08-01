@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdvancedTrees
+namespace Trees
 {
-    public class AVLTree<T>
+    class RedBlackTree<T>
     {
-
-
-
     }
 }

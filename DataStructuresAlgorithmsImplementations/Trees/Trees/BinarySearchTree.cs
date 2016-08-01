@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStruturesImplementations
+namespace Trees
 {
-    class BST<T> 
+    class BinarySearchTree<T>
     {
         private TNode<T> root;
         private int size;
@@ -14,13 +14,12 @@ namespace DataStruturesImplementations
         public TNode<T> Root { get { return root; } set { root = value; } }
         public int Size { get { return size; } }
 
-        public BST()
+        public BinarySearchTree()
         {
             root = null;
             size = 0;
         }
-
-
+        
         // Depth first search traversals
         #region
         public void InOrderTraverse(TNode<T> root)
@@ -34,7 +33,7 @@ namespace DataStruturesImplementations
         }
         public void PreOrderTraverse(TNode<T> root)
         {
-            if(root != null)
+            if (root != null)
             {
                 Console.WriteLine(root.Value);
                 PreOrderTraverse(root.Left);
@@ -43,7 +42,7 @@ namespace DataStruturesImplementations
         }
         public void PostOrderTraverse(TNode<T> root)
         {
-            if(root != null)
+            if (root != null)
             {
                 PostOrderTraverse(root.Left);
                 PostOrderTraverse(root.Right);
@@ -59,11 +58,11 @@ namespace DataStruturesImplementations
             {
                 TNode<T> node = queue.Dequeue();
 
-                if(node.Left != null)
+                if (node.Left != null)
                 {
                     queue.Enqueue(node.Left);
                 }
-                if(node.Right != null)
+                if (node.Right != null)
                 {
                     queue.Enqueue(node.Right);
                 }
@@ -78,11 +77,11 @@ namespace DataStruturesImplementations
         #region
         public TNode<T> Search(TNode<T> root, int key)
         {
-            if(root == null || root.Key == key)
+            if (root == null || root.Key == key)
             {
                 return root;
             }
-            if(key < root.Key)
+            if (key < root.Key)
             {
                 return Search(root.Left, key);
             }
@@ -94,10 +93,10 @@ namespace DataStruturesImplementations
 
         public TNode<T> IterativeSearch(TNode<T> root, int key)
         {
-           
-            while(root != null && root.Key != key)
+
+            while (root != null && root.Key != key)
             {
-                if(key < root.Key)
+                if (key < root.Key)
                 {
                     root = root.Left;
                 }
@@ -114,13 +113,13 @@ namespace DataStruturesImplementations
         public TNode<T> Successor(TNode<T> root)
         {
 
-            if(root.Right != null)
+            if (root.Right != null)
             {
                 return Minimum(root.Right);
             }
 
             TNode<T> parent = root.Parent;
-            while(parent != null && root == parent.Right)
+            while (parent != null && root == parent.Right)
             {
                 root = parent;
                 parent = parent.Parent;
@@ -132,13 +131,13 @@ namespace DataStruturesImplementations
         public TNode<T> Predecessor(TNode<T> root)
         {
 
-            if(root.Left != null)
+            if (root.Left != null)
             {
                 return Maximum(root.Left);
             }
 
             TNode<T> parent = root.Parent;
-            while(parent != null & root == parent.Left)
+            while (parent != null & root == parent.Left)
             {
                 root = parent;
                 parent = parent.Parent;
@@ -153,7 +152,7 @@ namespace DataStruturesImplementations
         #region
         public TNode<T> Minimum(TNode<T> root)
         {
-            while(root.Left != null)
+            while (root.Left != null)
             {
                 root = root.Left;
             }
@@ -162,7 +161,7 @@ namespace DataStruturesImplementations
 
         public TNode<T> Maximum(TNode<T> root)
         {
-            while(root.Right != null)
+            while (root.Right != null)
             {
                 root = root.Right;
             }
@@ -174,10 +173,10 @@ namespace DataStruturesImplementations
         #region
         public void Insert(TNode<T> newNode)
         {
-            
+
             TNode<T> current = root;
 
-            if(current == null)
+            if (current == null)
             {
                 root = newNode;
                 newNode.Parent = null;
@@ -186,9 +185,9 @@ namespace DataStruturesImplementations
             }
             else
             {
-                while(current.Left != null && current.Right != null)
+                while (current.Left != null && current.Right != null)
                 {
-                    if(newNode.Key < current.Key)
+                    if (newNode.Key < current.Key)
                     {
                         current = current.Left;
                     }
@@ -198,10 +197,10 @@ namespace DataStruturesImplementations
                     }
                 }
             }
-            
+
             newNode.Parent = current;
 
-            if(newNode.Key < current.Key)
+            if (newNode.Key < current.Key)
             {
                 current.Left = newNode;
             }
@@ -212,15 +211,15 @@ namespace DataStruturesImplementations
 
             size++;
         }
-        
+
         public void Replace(TNode<T> nodeA, TNode<T> nodeB)
         {
-            
-            if(nodeA.Parent == null)
+
+            if (nodeA.Parent == null)
             {
                 root = nodeB;
             }
-            else if(nodeA == nodeA.Parent.Left)
+            else if (nodeA == nodeA.Parent.Left)
             {
                 nodeA.Parent.Left = nodeB;
             }
@@ -228,7 +227,7 @@ namespace DataStruturesImplementations
             {
                 nodeA.Parent.Right = nodeB;
             }
-            if(nodeB != null)
+            if (nodeB != null)
             {
                 nodeB.Parent = nodeA.Parent;
             }
@@ -239,15 +238,15 @@ namespace DataStruturesImplementations
         public void Delete(TNode<T> nodeD)
         {
 
-            if(nodeD.Left == null && nodeD.Right == null)
+            if (nodeD.Left == null && nodeD.Right == null)
             {
                 nodeD.Parent = nodeD;
             }
-            else if(nodeD.Left == null)
+            else if (nodeD.Left == null)
             {
                 Replace(nodeD, nodeD.Right);
             }
-            else if(nodeD.Right == null)
+            else if (nodeD.Right == null)
             {
                 Replace(nodeD, nodeD.Left);
             }
@@ -255,8 +254,8 @@ namespace DataStruturesImplementations
             {
 
                 TNode<T> S = Minimum(nodeD.Right);
-                
-                if(S.Parent != nodeD)
+
+                if (S.Parent != nodeD)
                 {
                     Replace(S, S.Right);
                     S.Right = nodeD.Right;

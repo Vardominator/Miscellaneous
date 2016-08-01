@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStruturesImplementations
+namespace LinkedLists
 {
-
     class DLList<T>
     {
 
@@ -23,7 +22,7 @@ namespace DataStruturesImplementations
             head.Next = tail;
             tail.Prev = head;
         }
-        
+
         public void AddToEnd(T value)
         {
 
@@ -115,17 +114,17 @@ namespace DataStruturesImplementations
             {
                 throw new ArgumentOutOfRangeException("Input position is out of range.");
             }
-            if(position == 0)
+            if (position == 0)
             {
                 RemoveFront();
                 return;
             }
-            else if(position == count - 1)
+            else if (position == count - 1)
             {
                 RemoveEnd();
                 return;
             }
-            
+
             LNode<T> currentLeft = head.Next;
             LNode<T> currentRight;
             for (int i = 0; i < position - 1; i++)
@@ -139,23 +138,20 @@ namespace DataStruturesImplementations
 
             count--;
         }
-
-
-
-
+        
 
         public void AddAt(int position, T value)
         {
-            if(position < 0 || position > count - 1)
+            if (position < 0 || position > count - 1)
             {
                 throw new NullReferenceException("Input position is out of range.");
             }
-            else if(position == 0)
+            else if (position == 0)
             {
                 AddToFront(value);
                 return;
             }
-            else if(position == count - 1)
+            else if (position == count - 1)
             {
                 AddToEnd(value);
                 return;
@@ -186,7 +182,7 @@ namespace DataStruturesImplementations
             }
             count++;
         }
-        
+
         public bool isEmpty()
         {
             return count == 0;
@@ -197,7 +193,7 @@ namespace DataStruturesImplementations
             LNode<T> root = head;
             LNode<T> current = root.Next;
             string list = "";
-            while(current.Next != tail)
+            while (current.Next != tail)
             {
                 list += current.Val + " ";
                 current = current.Next;
@@ -206,5 +202,4 @@ namespace DataStruturesImplementations
             return list;
         }
     }
-
 }

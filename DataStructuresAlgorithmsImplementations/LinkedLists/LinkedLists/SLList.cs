@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStruturesImplementations
+namespace LinkedLists
 {
-
     /// <summary>
     /// Singly linked list
     /// </summary>
@@ -31,7 +30,7 @@ namespace DataStruturesImplementations
 
             LNode<T> newNode = new LNode<T>(value);
 
-            if(head.Next == null)
+            if (head.Next == null)
             {
                 head.Next = newNode;
             }
@@ -41,13 +40,13 @@ namespace DataStruturesImplementations
 
                 LNode<T> current = head;
 
-                while(current.Next != null)
+                while (current.Next != null)
                 {
                     current = current.Next;
                 }
 
                 current.Next = newNode;
-            
+
             }
             count++;
 
@@ -63,7 +62,7 @@ namespace DataStruturesImplementations
                 head.Next = newNode;
             }
 
-            
+
             LNode<T> oldFirstNode = head.Next;
 
             head.Next = newNode;
@@ -77,7 +76,7 @@ namespace DataStruturesImplementations
 
         public void RemoveFromFront()
         {
-            if(IsEmpty())
+            if (IsEmpty())
             {
                 throw new NullReferenceException("List is empty.");
             }
@@ -87,12 +86,12 @@ namespace DataStruturesImplementations
 
         public void RemoveFromEnd()
         {
-            if(IsEmpty())
+            if (IsEmpty())
             {
                 throw new NullReferenceException("List is empty.");
             }
             LNode<T> current = head.Next;
-            while(current.Next.Next != null)
+            while (current.Next.Next != null)
             {
                 current = current.Next;
             }
@@ -100,14 +99,14 @@ namespace DataStruturesImplementations
             count--;
         }
 
-    
+
         public void RemoveAt(int position)
         {
             if (IsEmpty())
             {
                 throw new NullReferenceException("List is empty.");
             }
-            else if(position > count - 1)
+            else if (position > count - 1)
             {
                 throw new ArgumentOutOfRangeException("Input position exceeds list count.");
             }
@@ -137,7 +136,7 @@ namespace DataStruturesImplementations
             return head.Next == null;
         }
 
-        
+
         public override string ToString()
         {
 
