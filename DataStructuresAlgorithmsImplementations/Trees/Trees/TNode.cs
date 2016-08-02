@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trees
 {
-    class TNode<T>
+    public class TNode<T>
     {
         private int key;
         public int Key { get { return key; } set { key = value; } }
