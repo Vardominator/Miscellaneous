@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trees
 {
-    class BinarySearchTree<T>
+    public class BinarySearchTree<T>
     {
         private TNode<T> root;
         private int size;
@@ -174,42 +174,79 @@ namespace Trees
         public void Insert(TNode<T> newNode)
         {
 
+            TNode<T> parent = null;
             TNode<T> current = root;
 
-            if (current == null)
+            while(current != null)
+            {
+                parent = current;
+                if(newNode.Key < current.Key)
+                {
+                    current = current.Left;
+                }
+                else
+                {
+                    current = current.Right;
+                }
+            }
+
+            newNode.Parent = parent;
+
+            if(parent == null)
             {
                 root = newNode;
-                newNode.Parent = null;
-                size++;
-                return;
+            }
+            else if(newNode.Key < parent.Key)
+            {
+                parent.Left = newNode;
             }
             else
             {
-                while (current.Left != null && current.Right != null)
+                parent.Right = newNode;
+            }
+
+            size++;
+        }
+
+
+        public void InsertRecursive(TNode<T> head, TNode<T> newNode)
+        {
+           
+            if(head == null)
+            {
+                head = newNode;
+            }
+
+            else
+            {
+                if(newNode.Key < head.Key)
                 {
-                    if (newNode.Key < current.Key)
+                    if(head.Left == null)
                     {
-                        current = current.Left;
+                        head.Left = newNode;
+                        newNode.Parent = head;
                     }
                     else
                     {
-                        current = current.Right;
+                        InsertRecursive(head.Left, newNode);
+                    }
+                }
+                else
+                {
+                    if(head.Right == null)
+                    {
+                        head.Right = newNode;
+                        newNode.Parent = head;
+                    }
+                    else
+                    {
+                        InsertRecursive(head.Right, newNode);
                     }
                 }
             }
 
-            newNode.Parent = current;
-
-            if (newNode.Key < current.Key)
-            {
-                current.Left = newNode;
-            }
-            else
-            {
-                current.Right = newNode;
-            }
-
             size++;
+
         }
 
         public void Replace(TNode<T> nodeA, TNode<T> nodeB)
