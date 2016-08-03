@@ -13,10 +13,10 @@ namespace Graph
 
         public List<WeightedEdge<T>> Edges { get { return edges; } }
 
-        public WeightedGraph(List<Vertex<T>> initialVertices, List<WeightedEdge<T>> initialEdges)
+        public WeightedGraph(List<Vertex<T>> vertices, List<WeightedEdge<T>> edges)
         {
-            vertices = initialVertices;
-            edges = initialEdges;
+            this.vertices = vertices;
+            this.edges = edges;
         }
 
         public void AddEdge(WeightedEdge<T> newEdge)
@@ -67,11 +67,9 @@ namespace Graph
             }
             
             path.Add(end);
-
             return path;
 
         }
-
 
         public List<Vertex<T>> AStarSearch(Vertex<T> start, Vertex<T> end)
         {
@@ -90,7 +88,5 @@ namespace Graph
             start.Cost = 0;
 
         }
-       
-
     }
 }
