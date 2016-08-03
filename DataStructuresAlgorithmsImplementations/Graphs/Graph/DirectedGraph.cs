@@ -19,10 +19,10 @@ namespace Graph
             vertices = initialNodes;
         }
 
-        public void AddEdge(Vertex<T> vertexA, Vertex<T> vertexB)
-        {
-            vertexA.AddEdge(vertexB);
-        }
+        //public void AddEdge(Vertex<T> vertexA, Vertex<T> vertexB)
+        //{
+        //    vertexA.AddEdge(vertexB);
+        //}
 
         public void AddVertex(Vertex<T> vertex)
         {

@@ -10,5 +10,4 @@ Washington D.C.:Toronto,1;New York City,1;Boston,1
 New York City:Washington D.C.,1;Boston,1
 Boston:New York City,1;Washington D.C,1
 Miami:
-Toronto:Seattle,1;Minneapolis,1;Washington D.C.,1
 Mexico City:Los Angeles,1;Austin,1

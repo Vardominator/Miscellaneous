@@ -9,9 +9,10 @@ namespace Graph
     class WeightedEdge<T>
     {
         int weight;
+
         Vertex<T> start;
         Vertex<T> end;
-
+        
         public int Weight { get { return weight; } }
 
         public Vertex<T> Start { get { return start; } }
@@ -22,7 +23,8 @@ namespace Graph
             this.start = start;
             this.end = end;
             this.weight = weight;
-            start.Neighbors.Add(end);
+            start.AddNeighbor(end);
+            start.AddEdge(this);
         }
 
         public override string ToString()

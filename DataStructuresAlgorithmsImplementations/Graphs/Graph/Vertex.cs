@@ -8,19 +8,26 @@ namespace Graph
 {
     class Vertex<T>
     {
-        List<Vertex<T>> neighbors;   
+        List<Vertex<T>> neighbors;
+        List<WeightedEdge<T>> edges;
         T value;
         
         public List<Vertex<T>> Neighbors { get { return neighbors; } }
+        public List<WeightedEdge<T>> Edges { get { return edges; } }
+        
         public T Value { get { return value; } set { this.value = value; } }
         public bool IsVisited { get; set; }
         public int NeighborsCount { get { return neighbors.Count; } }
+
+        // Pathfinding
+        public int Cost { get; set; }
 
         public Vertex(T value)
         {
             this.value = value;
             IsVisited = false;
             neighbors = new List<Vertex<T>>();
+            edges = new List<WeightedEdge<T>>();
         }
 
         public Vertex(T value, List<Vertex<T>> neighbors)
@@ -33,17 +40,13 @@ namespace Graph
         {
             IsVisited = true;
         }
-        public void AddEdge(Vertex<T> vertex)
+        public void AddNeighbor(Vertex<T> vertex)
         {
             neighbors.Add(vertex);
         }
-        public void AddEdges(List<Vertex<T>> newNeighbors)
+        public void AddEdge(WeightedEdge<T> edge)
         {
-            neighbors.AddRange(newNeighbors);
-        }
-        public void RemoveEdge(Vertex<T> vertex)
-        {
-            neighbors.Remove(vertex);
+            edges.Add(edge);
         }
 
         public override string ToString()

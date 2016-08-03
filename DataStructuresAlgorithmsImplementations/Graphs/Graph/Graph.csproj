@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DirectedGraph.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="WeightedGraph.cs" />
     <Compile Include="WeightedEdge.cs" />
     <Compile Include="UndirectedGraph.cs" />

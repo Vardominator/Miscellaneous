@@ -22,11 +22,11 @@ namespace Graph
             vertices = initialVertices;
         }
 
-        public void AddPair(Vertex<T> vertexA, Vertex<T> vertexB)
-        {
-            vertexA.AddEdge(vertexB);
-            vertexB.AddEdge(vertexA);
-        }
+        //public void AddPair(Vertex<T> vertexA, Vertex<T> vertexB)
+        //{
+        //    vertexA.AddEdge(vertexB);
+        //    vertexB.AddEdge(vertexA);
+        //}
         public void AddVertex(Vertex<T> vertex)
         {
             vertices.Add(vertex);
