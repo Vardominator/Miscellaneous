@@ -9,18 +9,12 @@ namespace Graph
 {
     class Program
     {
-
-        static List<Vertex<string>> vertices;
-        static List<WeightedEdge<string>> weightedEdges;
+        static List<Vertex<string>> vertices = new List<Vertex<string>>();
+        static List<WeightedEdge<string>> weightedEdges = new List<WeightedEdge<string>>();
         static WeightedGraph<string> graph;
         
-
         static void Main(string[] args)
         {
-
-            vertices = new List<Vertex<string>>();
-            weightedEdges = new List<WeightedEdge<string>>();
-
             Vertex<string> LA = new Vertex<string>("Los Angeles");
             Vertex<string> SF = new Vertex<string>("San Francisco");
             Vertex<string> PAX = new Vertex<string>("Portland");
@@ -45,55 +39,25 @@ namespace Graph
             WeightedEdge<string> MNtoSEA = new WeightedEdge<string>(MN, SEA, 25);
             WeightedEdge<string> MNtoLV = new WeightedEdge<string>(MN, LV, 20);
 
-            AddItemsToList(weightedEdges, LAtoSF, SFtoLV, LAtoLV, SFtoPAX, SFtoLV, LVtoSF);
-            AddItemsToList(weightedEdges, PAXtoSEA, PAXtoMN, MNtoPAX, SEAtoMN, MNtoSEA, MNtoLV);
-
-
-            foreach (Vertex<string> vertex in vertices)
-            {
-                Console.WriteLine(vertex.ToString());
-            }
-            
-            Console.WriteLine();
+            AddItemsToList(weightedEdges, LAtoSF, SFtoLV, LAtoLV, SFtoPAX);
+            AddItemsToList(weightedEdges, SFtoLV, LVtoSF, PAXtoSEA, PAXtoMN);
+            AddItemsToList(weightedEdges, MNtoPAX, SEAtoMN, MNtoSEA, MNtoLV);
 
             graph = new WeightedGraph<string>(vertices, weightedEdges);
 
-            foreach (var vertex in vertices)
-            {
-                Console.WriteLine(vertex.Cost);
-            }
-
-            Console.WriteLine();
-
             List<Vertex<string>> path = graph.DijkstraSearch(LA, MN);
 
-            foreach (var node in path)
+            Console.WriteLine("Path from Los Angeles to Minneapolis:\n");
+
+            foreach (Vertex<string> node in path)
             {
-
                 Console.WriteLine(node.Value);
-
             }
-
-
-
+            Console.WriteLine();
         }
-
-
         static void AddItemsToList<T>(List<T> list, params T[] values)
         {
             list.AddRange(values);
         }
-
-        static void LoadVertices()
-        {
-
-        }
-
-        static void CreateEdges(string[] cityAndNeighbors, Vertex<string> currentCity)
-        {
-
-
-        }
-
     }
 }
