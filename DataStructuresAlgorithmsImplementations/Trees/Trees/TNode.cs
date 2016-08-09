@@ -22,10 +22,19 @@ namespace Trees
 
         private TNode<T> parent;
         public TNode<T> Parent { get { return parent; } set { parent = value; } }
+        
+
+        public COLOR Color { get { return Color; } set { Color = value; } }
+
+        public enum COLOR
+        {
+            RED,
+            BLACK
+        }
 
         public TNode(int key, T value)
         {
-            this.value = value;
+            this.value = value != null ? value : default(T);
             this.key = key;
         }
     }
