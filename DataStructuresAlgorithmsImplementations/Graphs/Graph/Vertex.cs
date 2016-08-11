@@ -14,13 +14,17 @@ namespace Graph
         
         public List<Vertex<T>> Neighbors { get { return neighbors; } }
         public List<WeightedEdge<T>> Edges { get { return edges; } }
-        
+
+        // For A*
+        public Location Location { get; set; }
+        public double Distance { get; set; }
+
         public T Value { get { return value; } set { this.value = value; } }
         public bool IsVisited { get; set; }
         public int NeighborsCount { get { return neighbors.Count; } }
 
         // Pathfinding
-        public int Cost { get; set; }
+        public double Cost { get; set; }
 
         public Vertex(T value)
         {
@@ -61,5 +65,6 @@ namespace Graph
 
             return allNeighbors.ToString();
         }
+
     }
 }

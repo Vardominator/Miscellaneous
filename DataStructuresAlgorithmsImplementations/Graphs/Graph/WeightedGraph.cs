@@ -30,56 +30,101 @@ namespace Graph
 
         public List<Vertex<T>> DijkstraSearch(Vertex<T> start, Vertex<T> end)
         {
-            List<Vertex<T>> path = new List<Vertex<T>>();
-            List<Vertex<T>> unvisitedVertices = new List<Vertex<T>>();
-            Vertex<T> current = start;
+            Dictionary<Vertex<T>, Vertex<T>> parentMap = new Dictionary<Vertex<T>, Vertex<T>>();
+            PriorityQueue<Vertex<T>> priorityQueue = new PriorityQueue<Vertex<T>>();
 
             InitializeCosts(start);
+            priorityQueue.Enqueue(start, start.Cost);
 
-            unvisitedVertices.Add(current);
+            Vertex<T> current;
 
-            while(current != end)
+            while (priorityQueue.Count > 0)
             {
-                List<WeightedEdge<T>> currentNeighbors = current.Edges;
+                current = priorityQueue.Dequeue();
 
-                int currentCost = int.MaxValue;
-
-                current.IsVisited = true;
-                unvisitedVertices.Remove(current);
-                path.Add(current);
-
-                foreach (WeightedEdge<T> edge in currentNeighbors)
+                if (!current.IsVisited)
                 {
-                    if(!edge.End.IsVisited)
+                    current.Visit();
+
+                    if (current.Equals(end))
                     {
-                        edge.End.Cost = current.Cost + edge.Weight;
+                        break;
                     }
 
-                    if (edge.End.Cost < currentCost && !edge.End.IsVisited)
+                    foreach (WeightedEdge<T> edge in current.Edges)
                     {
-                        currentCost = edge.End.Cost;
-                        current = edge.End;
+                        Vertex<T> neighbor = edge.End;
+
+                        double newCost = current.Cost + edge.Weight;
+                        double neighborCost = neighbor.Cost;
+
+                        if (newCost < neighborCost)
+                        {
+                            neighbor.Cost = newCost;
+                            parentMap.Add(neighbor, current);
+                            double priority = newCost;
+                            priorityQueue.Enqueue(neighbor, priority);
+                        }
                     }
                 }
-
-                unvisitedVertices.Add(current);
-
             }
-            
-            path.Add(end);
+            List<Vertex<T>> path = ReconstructPath(parentMap, start, end);
             return path;
-
         }
+
 
         public List<Vertex<T>> AStarSearch(Vertex<T> start, Vertex<T> end)
         {
+            Dictionary<Vertex<T>, Vertex<T>> parentMap = new Dictionary<Vertex<T>, Vertex<T>>();
+            PriorityQueue<Vertex<T>> priorityQueue = new PriorityQueue<Vertex<T>>();
 
-            throw new NotImplementedException();
+            InitializeCosts(start);
+            InitializeDistances(start);
+            priorityQueue.Enqueue(start, start.Cost);
+
+            Vertex<T> current;
+
+            while (priorityQueue.Count > 0)
+            {
+                current = priorityQueue.Dequeue();
+
+                if (!current.IsVisited)
+                {
+                    current.Visit();
+
+                    if (current.Equals(end))
+                    {
+                        break;
+                    }
+
+                    foreach (WeightedEdge<T> edge in current.Edges)
+                    {
+                        Vertex<T> neighbor = edge.End;
+
+                        double newCost = current.Cost + edge.Weight;
+                        double neighborCost = neighbor.Cost;
+
+                        if (newCost < neighborCost)
+                        {
+                            neighbor.Cost = newCost;
+                            parentMap.Add(neighbor, current);
+                            double priority = newCost + Heuristic(neighbor, end);
+                            priorityQueue.Enqueue(neighbor, priority);
+                        }
+                    }
+                }
+            }
+            List<Vertex<T>> path = ReconstructPath(parentMap, start, end);
+            return path;
+        }
+
+        public double Heuristic(Vertex<T> vertexA, Vertex<T> vertexB)
+        {
+            return vertexA.Location.DistanceTo(vertexB.Location);
         }
 
         public void InitializeCosts(Vertex<T> start)
         {
-
             foreach (Vertex<T> vertex in vertices)
             {
                 vertex.Cost = int.MaxValue;
@@ -88,5 +133,33 @@ namespace Graph
             start.Cost = 0;
 
         }
+    
+        public List<Vertex<T>> ReconstructPath(Dictionary<Vertex<T>, Vertex<T>> parentMap, Vertex<T> start, Vertex<T> end)
+        {
+            List<Vertex<T>> path = new List<Vertex<T>>();
+            Vertex<T> current = end;
+
+            while (current != start)
+            {
+                path.Add(current);
+                current = parentMap[current];
+            }
+
+            path.Add(start);
+
+            path.Reverse();
+            return path;
+        }
+
+        // For A*
+        public void InitializeDistances(Vertex<T> start)
+        {
+            foreach(Vertex<T> vertex in vertices)
+            {
+                vertex.Distance = start.Location.DistanceTo(vertex.Location);
+            }
+            start.Distance = 0.0;
+        }
+
     }
 }

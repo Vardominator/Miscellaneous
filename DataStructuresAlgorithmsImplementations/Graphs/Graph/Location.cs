@@ -20,6 +20,11 @@ namespace Graph
             this.y = y;
         }
 
+        public double DistanceTo(Location end)
+        {
+            return Math.Sqrt(Math.Pow(this.x - end.X, 2) + Math.Pow(this.y - end.Y, 2));
+        }
+
         public override string ToString()
         {
             return $"[{x},{y}]";

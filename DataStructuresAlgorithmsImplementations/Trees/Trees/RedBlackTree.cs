@@ -150,12 +150,11 @@ namespace Trees
                     {
                         z = z.Parent;
                         LeftRotate(tree, z);
+                        z.Parent.Color = TNode<T>.COLOR.BLACK;
+                        z.Parent.Parent.Color = TNode<T>.COLOR.RED;
+                        RightRotate(tree, z.Parent.Parent);
                     }
-
-                    z.Parent.Color = TNode<T>.COLOR.BLACK;
-                    z.Parent.Parent.Color = TNode<T>.COLOR.RED;
-                    RightRotate(tree, z.Parent.Parent);
-
+                    
                 }
                 else
                 {
@@ -249,7 +248,7 @@ namespace Trees
                     }
                     if(sibling.Left.Color == TNode<T>.COLOR.BLACK && sibling.Right.Color == TNode<T>.COLOR.BLACK)
                     {
-                        sibling.Parent.Color = TNode<T>.COLOR.RED;
+                        sibling.Color = TNode<T>.COLOR.RED;
                         node = node.Parent;
                     }
                     else if(sibling.Right.Color == TNode<T>.COLOR.BLACK)
@@ -270,7 +269,32 @@ namespace Trees
                 {
                     TNode<T> sibling = node.Parent.Left;
 
-                    
+                    if(sibling.Color == TNode<T>.COLOR.RED)
+                    {
+                        sibling.Color = TNode<T>.COLOR.BLACK;
+                        node.Parent.Color = TNode<T>.COLOR.RED;
+                        RightRotate(tree, node.Parent);
+                        sibling = node.Parent.Right;
+                    }
+                    if(sibling.Left.Color == TNode<T>.COLOR.BLACK && sibling.Right.Color == TNode<T>.COLOR.BLACK)
+                    {
+                        sibling.Color = TNode<T>.COLOR.RED;
+                        node = node.Parent;
+                    }
+                    else if(sibling.Left.Color == TNode<T>.COLOR.BLACK)
+                    {
+                        sibling.Right.Color = TNode<T>.COLOR.BLACK;
+                        sibling.Color = TNode<T>.COLOR.RED;
+                        LeftRotate(tree, sibling);
+                    }
+
+                    RightRotate(tree, sibling.Parent);
+                    sibling.Color = node.Parent.Color;
+                    node.Parent.Color = TNode<T>.COLOR.BLACK;
+                    sibling.Right.Color = TNode<T>.COLOR.BLACK;
+
+                    node = tree.root;
+
                 }
             }
         }
