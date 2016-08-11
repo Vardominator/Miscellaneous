@@ -34,10 +34,7 @@ namespace Graph
             IsVisited = false;
             this.neighbors = neighbors;
         }
-        public void Visit()
-        {
-            IsVisited = true;
-        }
+
         public void AddNeighbor(Vertex<T> vertex)
         {
             neighbors.Add(vertex);

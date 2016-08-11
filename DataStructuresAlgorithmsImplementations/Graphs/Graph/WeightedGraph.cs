@@ -65,7 +65,7 @@ namespace Graph
 
                 if (!current.IsVisited)
                 {
-                    current.Visit();
+                    current.IsVisited = true;
 
                     if (current.Equals(end))
                     {
@@ -109,7 +109,7 @@ namespace Graph
 
                 if (!current.IsVisited)
                 {
-                    current.Visit();
+                    current.IsVisited = true;
 
                     if (current.Equals(end))
                     {
