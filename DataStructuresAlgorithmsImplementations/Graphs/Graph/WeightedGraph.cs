@@ -10,7 +10,6 @@ namespace Graph
     {
         List<WeightedEdge<T>> edges;
         List<Vertex<T>> vertices;
-
         public List<WeightedEdge<T>> Edges { get { return edges; } }
 
         public WeightedGraph(List<Vertex<T>> vertices, List<WeightedEdge<T>> edges)
@@ -18,7 +17,6 @@ namespace Graph
             this.vertices = vertices;
             this.edges = edges;
         }
-
         public void AddEdge(WeightedEdge<T> newEdge)
         {
             edges.Add(newEdge);
@@ -27,6 +25,29 @@ namespace Graph
         {
             edges.Remove(edge);
         }
+
+        /// <summary>
+        /// Pathfinding algorithms available: Dijkstra and AStar
+        /// </summary>
+        public List<Vertex<T>> Pathfinder(Vertex<T> start, Vertex<T> end, string algorithm)
+        {
+            Func<Vertex<T>, Vertex<T>, List<Vertex<T>>> pathfinder;
+
+            if (algorithm == "Dijkstra")
+            {
+                pathfinder = DijkstraSearch;
+            }
+            else if (algorithm == "AStar")
+            {
+                pathfinder = AStarSearch;
+            }
+            else
+            {
+                throw new ArgumentException("Pathfinding algorithm not available.");
+            }
+            return pathfinder(start, end);
+        }
+
 
         public List<Vertex<T>> DijkstraSearch(Vertex<T> start, Vertex<T> end)
         {
@@ -71,15 +92,13 @@ namespace Graph
             List<Vertex<T>> path = ReconstructPath(parentMap, start, end);
             return path;
         }
-
-
+        
         public List<Vertex<T>> AStarSearch(Vertex<T> start, Vertex<T> end)
         {
             Dictionary<Vertex<T>, Vertex<T>> parentMap = new Dictionary<Vertex<T>, Vertex<T>>();
             PriorityQueue<Vertex<T>> priorityQueue = new PriorityQueue<Vertex<T>>();
 
             InitializeCosts(start);
-            InitializeDistances(start);
             priorityQueue.Enqueue(start, start.Cost);
 
             Vertex<T> current;
@@ -149,16 +168,6 @@ namespace Graph
 
             path.Reverse();
             return path;
-        }
-
-        // For A*
-        public void InitializeDistances(Vertex<T> start)
-        {
-            foreach(Vertex<T> vertex in vertices)
-            {
-                vertex.Distance = start.Location.DistanceTo(vertex.Location);
-            }
-            start.Distance = 0.0;
         }
 
     }

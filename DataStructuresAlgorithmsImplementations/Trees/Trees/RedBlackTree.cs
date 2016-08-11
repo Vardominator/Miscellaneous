@@ -182,11 +182,9 @@ namespace Trees
             }
 
         }
-
-
+        
         public void Delete(RedBlackTree<T> tree, TNode<T> node)
         {
-
             TNode<T> movingNode = node;
             TNode<T>.COLOR originalColor = node.Color;
 

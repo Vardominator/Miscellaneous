@@ -14,7 +14,7 @@ namespace TreesUnitTest
 
             BinarySearchTree<string> bst = new BinarySearchTree<string>();
 
-            TNode<string> rosot = new TNode<string>(50, "cars");
+            TNode<string> root = new TNode<string>(50, "cars");
             TNode<string> node1 = new TNode<string>(25, "electric");
             TNode<string> node2 = new TNode<string>(75, "gas");
             TNode<string> node3 = new TNode<string>(10, "tesla");

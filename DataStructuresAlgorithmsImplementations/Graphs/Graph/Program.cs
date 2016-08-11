@@ -45,7 +45,7 @@ namespace Graph
 
             graph = new WeightedGraph<string>(vertices, weightedEdges);
 
-            List<Vertex<string>> path = graph.DijkstraSearch(LA, MN);
+            List<Vertex<string>> path = graph.Pathfinder(LA, MN, "Dijkstra");
 
             Console.WriteLine("Path from Los Angeles to Minneapolis:\n");
 
