@@ -6,24 +6,17 @@ using System.Threading.Tasks;
 
 namespace Graph
 {
-    class WeightedGraph<T>
+    public class WeightedGraph<T>
     {
         List<WeightedEdge<T>> edges;
         List<Vertex<T>> vertices;
         public List<WeightedEdge<T>> Edges { get { return edges; } }
+        public List<Vertex<T>> Vertices { get { return vertices; } }
 
         public WeightedGraph(List<Vertex<T>> vertices, List<WeightedEdge<T>> edges)
         {
             this.vertices = vertices;
             this.edges = edges;
-        }
-        public void AddEdge(WeightedEdge<T> newEdge)
-        {
-            edges.Add(newEdge);
-        }
-        public void RemoveEdge(WeightedEdge<T> edge)
-        {
-            edges.Remove(edge);
         }
 
         /// <summary>
@@ -48,6 +41,12 @@ namespace Graph
             return pathfinder(start, end);
         }
 
+        public List<Vertex<T>> Pathfinder<TSearchAlgorithm>(Vertex<T> start, Vertex<T> end)
+            where TSearchAlgorithm : ISearchAlgorithm<T>, new()
+        {
+            TSearchAlgorithm searchAlgorithm = new TSearchAlgorithm();
+            return searchAlgorithm.Search(this, start, end);
+        }
 
         public List<Vertex<T>> DijkstraSearch(Vertex<T> start, Vertex<T> end)
         {

@@ -44,11 +44,13 @@ namespace Graph
             AddItemsToList(weightedEdges, MNtoPAX, SEAtoMN, MNtoSEA, MNtoLV);
 
             graph = new WeightedGraph<string>(vertices, weightedEdges);
-
             List<Vertex<string>> path = graph.Pathfinder(LA, MN, "Dijkstra");
 
-            Console.WriteLine("Path from Los Angeles to Minneapolis:\n");
+            graph.Pathfinder<DijkstraSearch<string>>(LA, MN); 
 
+
+            Console.WriteLine("Path from Los Angeles to Minneapolis:\n");
+            
             foreach (Vertex<string> node in path)
             {
                 Console.WriteLine(node.Value);
