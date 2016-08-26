@@ -152,28 +152,29 @@ namespace Problems_1_through_20
 
 
             #region Problem 7
-            int currentNum = 3;
-            int primeCounter = 1;
+            //int currentNum = 3;
+            //int primeCounter = 1;
+            //bool isPrime = true;
 
-            while (primeCounter < 10001)
-            {
-                bool isPrime = true;
-                for (int i = 2; i <= Math.Sqrt(currentNum); i++)
-                {
-                    if(currentNum % i == 0)
-                    {
-                        isPrime = false;
-                        break;
-                    }
-                }
-                if (isPrime)
-                {
-                    primeCounter++;
-                }
-                currentNum++;
-            }
+            //while (primeCounter < 10001)
+            //{
+                
+            //    for (int i = 2; i <= Math.Sqrt(currentNum); i++)
+            //    {
+            //        if(currentNum % i == 0)
+            //        {
+            //            isPrime = false;
+            //            break;
+            //        }
+            //    }
+            //    if (isPrime)
+            //    {
+            //        primeCounter++;
+            //    }
+            //    currentNum++;
+            //}
 
-            Console.WriteLine($"Problem 7: {--currentNum}");
+            //Console.WriteLine($"Problem 7: {--currentNum}");
             #endregion
 
 
@@ -199,6 +200,63 @@ namespace Problems_1_through_20
                 }
             }
             Console.WriteLine($"Problem 8: {largest13DigitProduct}");
+            #endregion
+
+
+            #region Problem 9
+            for (int a = 0; a < 999; a++)
+            {
+                for(int b = 0; b < 999; b++)
+                {
+                    double aSquared = Math.Pow(a, 2);
+
+                    double bSqaured = Math.Pow(b, 2);
+
+                    double c = Math.Pow(aSquared + bSqaured, 0.5);
+
+
+                    if (aSquared + bSqaured == Math.Pow(c, 2))
+                    {
+                        if(a + b + c == 1000 && a < b && b < c)
+                        {
+                            Console.WriteLine($"Problem 9: {a},{b},{c}; {a * b * c}");
+                        }
+                    }
+
+                }
+
+            }
+            #endregion
+
+
+            #region Problem 10
+            long primeSum = 0;
+            long currentPrime = 2;
+            bool isPrime = true;
+
+            while(currentPrime < 2000000)
+            {
+                isPrime = true;
+                for (int i = 2; i <= Math.Sqrt(currentPrime); i++)
+                {
+                    if(currentPrime % i == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+
+                if (isPrime)
+                {
+                    primeSum += currentPrime;
+                    isPrime = false;
+                    Console.WriteLine(currentPrime);
+                }
+                
+                currentPrime++;
+            }
+
+            Console.WriteLine($"Problem 10: {primeSum}");
             #endregion
 
         }
