@@ -265,6 +265,20 @@ namespace Problems_11_through_20
 
             #region Problem 18
 
+            StreamReader pyramid = new StreamReader(@"C:\Users\barse\Desktop\Github\Miscellaneous\ProjectEuler\Problems_11_through_20\Problems_11_through_20\problem18.txt");
+
+            List<List<int>> pyramidGrid = new List<List<int>>();
+
+            while (!pyramid.EndOfStream)
+            {
+                string currentLine = pyramid.ReadLine();
+
+
+
+            }
+
+       
+
             #endregion
 
         }
