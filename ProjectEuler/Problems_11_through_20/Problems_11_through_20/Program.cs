@@ -176,7 +176,7 @@ namespace Problems_11_through_20
             StringBuilder sb = new StringBuilder();
 
             int totalLength = 0;
-            int upTo = 1000;
+            int upTo = 5;
 
             for (int i = 1; i <= upTo; i++)
             {
