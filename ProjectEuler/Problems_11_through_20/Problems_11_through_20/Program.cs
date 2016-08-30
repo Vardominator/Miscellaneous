@@ -95,81 +95,180 @@ namespace Problems_11_through_20
 
 
             #region Problem 15
-            
-            ulong pathCount = 0;
 
-            int x = 21;
-            int y = 21;
+            //ulong pathCount = 0;
 
-
-            ulong[,] paths = new ulong[x, y];
+            //int x = 21;
+            //int y = 21;
 
 
-            for (int i = 0; i < x; i++)
+            //ulong[,] paths = new ulong[x, y];
+
+
+            //for (int i = 0; i < x; i++)
+            //{
+            //    paths[i, 0] = 1;
+            //}
+            //for (int j = 0; j < y; j++)
+            //{
+            //    paths[0, j] = 1;
+            //}
+
+            //for (int i = 1; i < x; i++)
+            //{
+            //    for (int j = 1; j < y; j++)
+            //    {
+            //        paths[i, j] = paths[i - 1, j] + paths[i, j - 1];
+            //    }
+            //}
+
+            //Console.WriteLine($"Problem 15: {paths[x - 1, y - 1]}");
+
+            #endregion
+
+
+            #region Problem 16
+            //int num = 25;
+            //StringBuilder sb = new StringBuilder();
+            //while(num > 1)
+            //{
+            //    for (int i = 9; i > 1; i--)
+            //    {
+
+            //        while (num % i == 0 && num > 1)
+            //        {
+            //            num /= i;
+            //            sb.Append(i);
+            //        }
+
+            //    }
+            //}
+
+            //Console.WriteLine(sb.ToString());
+            #endregion
+
+
+            #region Problem 17
+            Dictionary<int, string> digits = new Dictionary<int, string>()
             {
-                paths[i, 0] = 1;
-            }
-            for (int j = 0; j < y; j++)
-            {
-                paths[0, j] = 1;
-            }
+                {1, "one" }, {2, "two"}, {3, "three" }, {4, "four" }, {5, "five" },
+                {6, "six" }, {7, "seven" }, {8, "eight" }, {9, "nine" }
+            };
 
-            for (int i = 1; i < x; i++)
+            Dictionary<int, string> tens = new Dictionary<int, string>()
             {
-                for (int j = 1; j < y; j++)
+                {1, "ten" },{2, "twenty" }, {3, "thirty" }, {4, "forty" }, {5, "fifty" },
+                {6, "sixty" }, {7, "seventy" }, {8, "eighty" }, {9, "ninety" }
+            };
+
+            Dictionary<int, string> teens = new Dictionary<int, string>()
+            {
+                {13, "thirteen" }, {14,"fourteen" }, {15,"fifteen" }, {16, "sixteen" },
+                {17, "seventeen" }, {18, "eighteen" }, {19, "nineteen" }
+            };
+
+            Dictionary<int, string> unique = new Dictionary<int, string>()
+            {
+                {10, "ten" }, {11, "eleven" }, {12, "twelve" }
+            };
+
+
+            StringBuilder sb = new StringBuilder();
+
+            int totalLength = 0;
+            int upTo = 1000;
+
+            for (int i = 1; i <= upTo; i++)
+            {
+                int number = i;
+                int digit;
+
+
+                if (number >= 1 && number <= 9)
                 {
-                    paths[i, j] = paths[i - 1, j] + paths[i, j - 1];
+                    sb.Append(digits[number]);
                 }
-            }
+                else if (number >= 10 && number <= 12)
+                {
+                    sb.Append(unique[number]);
+                }
+                else if (number >= 13 && number <= 19)
+                {
+                    sb.Append(teens[number]);
+                }
+                else
+                {
+                    digit = number / 1000;
+                    
+                    if (digit != 0)
+                    {
+                        //Console.Write(digits[digit] + " thousand ");
+                        sb.Append(digits[digit] + "thousand");
+                    }
+                    number = number % 1000;
 
-            Console.WriteLine($"Problem 15: {paths[x - 1, y - 1]}");
+                    digit = number / 100;
+                    
+                    if (digit != 0)
+                    {
+                        //Console.Write(digits[digit] + " hundred ");
+                        sb.Append(digits[digit] + "hundred");
+                    }
+
+                    number = number % 100;
+
+                    digit = number / 10;
+                    
+                    if (digit != 0)
+                    {
+
+                        if (sb.Length > 0)
+                        {
+                            sb.Append("and");
+                        }
+
+                        if (number >= 20)
+                        {
+
+                            sb.Append(tens[digit]);
+
+                            number = number % 10;
+
+                            if (number > 0)
+                            {
+                                sb.Append(digits[number]);
+                            }
+
+                        }
+                        else if (number >= 13 && number <= 19)
+                        {
+                            sb.Append(teens[number]);
+                        }
+                        else if(number >= 10 && number <= 12)
+                        {
+                            sb.Append(unique[number]);
+                        }
+                    }
+                    else if(number > 0)
+                    {
+                        sb.Append("and" + digits[number]);
+                    }
+                }
+
+                //Console.WriteLine(sb.ToString());
+                totalLength += sb.Length;
+                sb.Clear();
+               // Console.WriteLine();
+            }
+            Console.WriteLine($"Problem 17: {totalLength}");
+            #endregion
+
+            #region Problem 18
 
             #endregion
 
         }
 
-
-        public static ulong factorial(ulong n)
-        {
-            if (n == 0 || n == 1)
-            {
-                return 1;
-            }
-            else
-            {
-                return factorial(n - 1) * n;
-            }
-        }
-
-
-        public static ulong numberOfPaths(int row, int col)
-        {
-            if(row == 0 || col == 0)
-            {
-                return 1;
-            }
-
-            return numberOfPaths(row - 1, col) + numberOfPaths(row, col - 1);
-        }
-
     }
 
-
-    class Point
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-
-        public Point(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        public static bool operator ==(Point p1, Point p2) =>
-            p1.X == p2.X && p1.Y == p2.Y;
-
-        public static bool operator !=(Point p1, Point p2) =>
-            !(p1 == p2);
-    }
 }
