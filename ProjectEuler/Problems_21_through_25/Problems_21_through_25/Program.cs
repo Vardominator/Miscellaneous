@@ -70,6 +70,42 @@ namespace Problems_21_through_25
             Console.WriteLine($"Problem 22: {total}");
             #endregion
 
+
+            #region Problem 24: Lexicographic permutations
+
+            List<int> digits = Enumerable.Range(0, 10).ToList();
+            IEnumerable<List<int>> permutations = Permutate(digits);
+
+
+            List<long> nums = new List<long>();
+
+           
+
+
+            foreach (var permutation in permutations)
+            {
+
+                StringBuilder sb = new StringBuilder();
+
+                for (int i = 0; i <= 9; i++)
+                {
+                    sb.Append(permutation[i]);
+                    //Console.Write(permutation[i]);
+                    
+                }
+                nums.Add(long.Parse(sb.ToString()));
+
+            }
+
+
+            nums.Sort();
+
+
+
+
+            Console.WriteLine($"Problem 24 {nums[1000000 - 1]}");
+            #endregion
+           
         }
 
 
@@ -91,8 +127,38 @@ namespace Problems_21_through_25
 
         }
 
-        // Helper for Problem 22
+        // Helper for Problem 24
+        public static IEnumerable<List<int>> Permutate(List<int> digits)
+        {
 
+            if(digits.Count == 2)
+            {
+                yield return new List<int>(digits);
+                yield return new List<int>{ digits[1], digits[0] };
+            }
+
+            else
+            {
+
+
+                foreach (var digit in digits)
+                {
+                    List<int> placeHolder = new List<int>(digits);
+                    placeHolder.Remove(digit);
+
+                    foreach (var list in Permutate(placeHolder))
+                    {
+
+                        list.Insert(0, digit);
+                        yield return list;
+
+                    }
+
+                }
+
+            }
+
+        } 
 
     }
 }
