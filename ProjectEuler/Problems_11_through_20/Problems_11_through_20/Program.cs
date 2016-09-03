@@ -95,81 +95,53 @@ namespace Problems_11_through_20
 
 
             #region Problem 15
+
+            //ulong pathCount = 0;
+
+            //int x = 21;
+            //int y = 21;
+
+
+            //ulong[,] paths = new ulong[x, y];
+
+
+            //for (int i = 0; i < x; i++)
+            //{
+            //    paths[i, 0] = 1;
+            //}
+            //for (int j = 0; j < y; j++)
+            //{
+            //    paths[0, j] = 1;
+            //}
+
+            //for (int i = 1; i < x; i++)
+            //{
+            //    for (int j = 1; j < y; j++)
+            //    {
+            //        paths[i, j] = paths[i - 1, j] + paths[i, j - 1];
+            //    }
+            //}
+
+            //Console.WriteLine($"Problem 15: {paths[x - 1, y - 1]}");
+
+            #endregion
+
+
+            #region Problem 16
+            double crazy = Math.Pow(2, 1000);
+            string crazyStr = crazy.ToString("0." + new string('#', 339));
+
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine(Math.Pow(2, i));
+            }           
             
-            ulong pathCount = 0;
-
-            int x = 21;
-            int y = 21;
-
-
-            ulong[,] paths = new ulong[x, y];
-
-
-            for (int i = 0; i < x; i++)
-            {
-                paths[i, 0] = 1;
-            }
-            for (int j = 0; j < y; j++)
-            {
-                paths[0, j] = 1;
-            }
-
-            for (int i = 1; i < x; i++)
-            {
-                for (int j = 1; j < y; j++)
-                {
-                    paths[i, j] = paths[i - 1, j] + paths[i, j - 1];
-                }
-            }
-
-            Console.WriteLine($"Problem 15: {paths[x - 1, y - 1]}");
 
             #endregion
 
         }
 
 
-        public static ulong factorial(ulong n)
-        {
-            if (n == 0 || n == 1)
-            {
-                return 1;
-            }
-            else
-            {
-                return factorial(n - 1) * n;
-            }
-        }
-
-
-        public static ulong numberOfPaths(int row, int col)
-        {
-            if(row == 0 || col == 0)
-            {
-                return 1;
-            }
-
-            return numberOfPaths(row - 1, col) + numberOfPaths(row, col - 1);
-        }
-
     }
 
-
-    class Point
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-
-        public Point(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        public static bool operator ==(Point p1, Point p2) =>
-            p1.X == p2.X && p1.Y == p2.Y;
-
-        public static bool operator !=(Point p1, Point p2) =>
-            !(p1 == p2);
-    }
 }
