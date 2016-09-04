@@ -72,6 +72,84 @@ namespace Problems_21_through_25
             #endregion
 
 
+            #region Problem 23: Non-abundant sums
+
+            List<int> perfectNums = new List<int>();
+            List<int> abundantNums = new List<int>();
+            List<int> deficientNums = new List<int>();
+
+            for (int i = 1; i <= 28123; i++)
+            {
+
+                int divisorSum = 0;
+
+                for (int j = 1; j <= i/2; j++)
+                {
+                    if(i % j == 0)
+                    {
+                        divisorSum += j;
+                    }
+                }
+
+                if(divisorSum == i)
+                {
+                    perfectNums.Add(i);
+                }
+                else if(divisorSum < i)
+                {
+                    deficientNums.Add(i);
+                }
+                else
+                {
+                    abundantNums.Add(i);
+                    Console.WriteLine(i);
+                }
+
+                
+            }
+
+            long nonAbundantSum = 0;
+            bool abundant = false;
+
+            for (int i = 1; i <= 28123; i++)
+            {
+
+                for (int j = 0; j < abundantNums.Count; j++)
+                {
+
+                    for (int k = j; k < abundantNums.Count; k++)
+                    {
+                        long abundantSum = abundantNums[j] + abundantNums[k];
+
+                        
+                        if (abundantSum == i)
+                        {
+                            abundant = true;
+                            break;
+                        }
+
+                    }
+
+                    if (abundant)
+                    {
+                        break;
+                    }
+
+                }
+
+                if (!abundant)
+                {
+                    Console.WriteLine(i);
+                    nonAbundantSum += i;
+                }
+
+                abundant = false;
+
+            }
+            Console.WriteLine($"Problem 23: {nonAbundantSum}");
+            #endregion
+
+
             #region Problem 24: Lexicographic permutations
 
             //List<int> digits = Enumerable.Range(0, 10).ToList();
@@ -101,72 +179,74 @@ namespace Problems_21_through_25
 
             #region Problem 25: 1000-digit fibonacci number
 
-            int currentNum = 1;
-            BigInteger currentFib = new BigInteger(currentNum);
+            //int currentNum = 1;
+            //BigInteger currentFib = new BigInteger(currentNum);
+
+            ////do
+            ////{
+            ////    currentNum++;
+            ////    currentFib = fibonacci(currentNum);
+            ////    Console.WriteLine($"Index {currentNum}: {currentFib.ToString()}");
+            ////    //Console.WriteLine("Index: " + currentNum + currentFib.ToString());
+
+            ////} while (currentFib.ToString().Length != 1000);
+
+            //int m = 2;
+            //int n = 1;
+
+            //BigInteger[,] F_1 = new BigInteger[m, n];
+            //BigInteger[,] T = new BigInteger[m, m];
+            //BigInteger[,] Result = new BigInteger[m, n];
+
+            //T[0, 0] = 0;
+            //T[0, 1] = 1;
+            //T[1, 0] = 1;
+            //T[1, 1] = 1;
+
+            //F_1[0, 0] = 1;
+            //F_1[1, 0] = 1;
+
+            //int index = 2;
+            //int lastIndex = 1000;
 
             //do
             //{
-            //    currentNum++;
-            //    currentFib = fibonacci(currentNum);
-            //    Console.WriteLine($"Index {currentNum}: {currentFib.ToString()}");
-            //    //Console.WriteLine("Index: " + currentNum + currentFib.ToString());
+            //    for (int i = 0; i < m; i++)
+            //    {
+            //        for (int j = 0; j < n; j++)
+            //        {
+            //            Result[i, j] = 0;
 
-            //} while (currentFib.ToString().Length != 1000);
+            //            for (int k = 0; k < 2; k++)
+            //            {
+            //                Result[i, j] += T[i, k] * F_1[k, j];
+            //            }
 
-            int m = 2;
-            int n = 1;
+            //        }
 
-            BigInteger[,] F_1 = new BigInteger[m, n];
-            BigInteger[,] T = new BigInteger[m, m];
-            BigInteger[,] Result = new BigInteger[m, n];
+            //    }
 
-            T[0, 0] = 0;
-            T[0, 1] = 1;
-            T[1, 0] = 1;
-            T[1, 1] = 1;
+            //    F_1[0, 0] = Result[0, 0];
+            //    F_1[1, 0] = Result[1, 0];
 
-            F_1[0, 0] = 1;
-            F_1[1, 0] = 1;
+            //    index++;
 
-            int index = 2;
-            int lastIndex = 1000;
+            //} while (F_1[1,0].ToString().Length != lastIndex);
 
-            do
-            {
-                for (int i = 0; i < m; i++)
-                {
-                    for (int j = 0; j < n; j++)
-                    {
-                        Result[i, j] = 0;
+            //for (int a = 0; a < m; a++)
+            //{
+            //    for (int b = 0; b < n; b++)
+            //    {
+            //        Console.WriteLine(F_1[a, b] + "\t");
+            //    }
 
-                        for (int k = 0; k < 2; k++)
-                        {
-                            Result[i, j] += T[i, k] * F_1[k, j];
-                        }
+            //    Console.WriteLine();
 
-                    }
-
-                }
-
-                F_1[0, 0] = Result[0, 0];
-                F_1[1, 0] = Result[1, 0];
-
-                index++;
-
-            } while (F_1[1,0].ToString().Length != lastIndex);
-
-            for (int a = 0; a < m; a++)
-            {
-                for (int b = 0; b < n; b++)
-                {
-                    Console.WriteLine(F_1[a, b] + "\t");
-                }
-
-                Console.WriteLine();
-
-            }
-            Console.WriteLine($"Problem 25: {index}");
+            //}
+            //Console.WriteLine($"Problem 25: {index}");
             #endregion
+
+
 
         }
 
