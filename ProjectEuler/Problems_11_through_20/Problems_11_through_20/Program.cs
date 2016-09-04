@@ -105,6 +105,27 @@ namespace Problems_11_through_20
 
             //ulong[,] paths = new ulong[x, y];
 
+<<<<<<< HEAD
+
+            //for (int i = 0; i < x; i++)
+            //{
+            //    paths[i, 0] = 1;
+            //}
+            //for (int j = 0; j < y; j++)
+            //{
+            //    paths[0, j] = 1;
+            //}
+
+            //for (int i = 1; i < x; i++)
+            //{
+            //    for (int j = 1; j < y; j++)
+            //    {
+            //        paths[i, j] = paths[i - 1, j] + paths[i, j - 1];
+            //    }
+            //}
+
+            //Console.WriteLine($"Problem 15: {paths[x - 1, y - 1]}");
+=======
 
             //for (int i = 0; i < x; i++)
             //{
@@ -383,9 +404,25 @@ namespace Problems_11_through_20
             Console.WriteLine($"Problem 19: {sundaysOnTheFirst}");
             #endregion
 
+>>>>>>> 11d2cee5c8ec61af5d7cdbbc16125183c9c8379d
 
             #region Problem 20
 
+<<<<<<< HEAD
+
+            #region Problem 16
+            double crazy = Math.Pow(2, 1000);
+            string crazyStr = crazy.ToString("0." + new string('#', 339));
+
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine(Math.Pow(2, i));
+            }           
+            
+
+            #endregion
+
+=======
             //Console.WriteLine(factorial(100));
             //BigInteger
             //Console.WriteLine(Math.Sqrt(2 * Math.PI * 20) * Math.Pow(20 / Math.E, 20));
@@ -444,9 +481,13 @@ namespace Problems_11_through_20
             }
 
             
+>>>>>>> 11d2cee5c8ec61af5d7cdbbc16125183c9c8379d
         }
         
 
+<<<<<<< HEAD
+
+=======
         public static BigInteger factorial(BigInteger n)
         {
             if(n.Equals(BigInteger.One))
@@ -457,6 +498,7 @@ namespace Problems_11_through_20
             return BigInteger.Multiply(n, factorial(BigInteger.Subtract(n, BigInteger.One)));
         }
          
+>>>>>>> 11d2cee5c8ec61af5d7cdbbc16125183c9c8379d
     }
 
 }
