@@ -49,7 +49,77 @@ namespace Problems_26_through_30
 
             #region Problem 27: Quadratic Primes
 
+            int maximumPrime = 0;
+            int maxA = 0;
+            int maxB = 0;
 
+            for (int a = -999; a <= 999; a++)
+            {
+
+                for (int b = -1000; b <= 1000; b++)
+                {
+
+                    int n = -1;
+                    bool isPrime = true;
+
+                    int result = 0;
+                    int consecutivePrimes = -1;
+
+                    // Find number of consecutive sums
+                    while(true)
+                    {
+
+                        consecutivePrimes++;
+                        n++;
+
+                        // Incredible formula
+                        result = n*n + a*n + b;
+                        int lastCheck = 0;
+
+                        if(result < 0)
+                        {
+                            lastCheck = -1 * result / 2;
+                        }
+                        else
+                        {
+                            lastCheck = result / 2;
+                        }
+
+                        // Check if prime
+                        for(int i = 2; i <= lastCheck; i++)
+                        {
+
+                            if(result % i == 0)
+                            {
+
+                                isPrime = false;
+
+                                if(consecutivePrimes > maximumPrime)
+                                {
+                                    maximumPrime = consecutivePrimes;
+                                    maxA = a;
+                                    maxB = b;
+                                    Console.WriteLine($"A: {a}, B: {b}, N: {n}, A*B: {a * b}");
+                                }
+
+                                break;
+
+                            }
+                            
+                        }
+
+                        if (!isPrime)
+                        {
+                            
+                            break;
+                        }
+                        
+                    }
+
+
+                }
+
+            }
 
             #endregion
 
