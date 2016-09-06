@@ -14,112 +14,153 @@ namespace Problems_26_through_30
 
             #region Problem 26: Reciprocal Cycles
 
-            
-            int maxRecurrenceCount = 0;
-            int maxRecurrenceNum = 0;
 
-            List<int> broughtDown = new List<int>();
+            //int maxRecurrenceCount = 0;
+            //int maxRecurrenceNum = 0;
 
-            for (int i = 2; i < 1000; i++)
-            {
-                int remainder = 1 % i;
+            //List<int> broughtDown = new List<int>();
 
-                int multiple = remainder * 10;
+            //for (int i = 2; i < 1000; i++)
+            //{
+            //    int remainder = 1 % i;
 
-                while (!broughtDown.Contains(multiple))
-                {
-                    broughtDown.Add(multiple);
-                    remainder = multiple % i;
-                    multiple = remainder * 10;
-                }
+            //    int multiple = remainder * 10;
 
-                if(broughtDown.Count > maxRecurrenceCount)
-                {
-                    maxRecurrenceCount = broughtDown.Count;
-                    maxRecurrenceNum = i;
-                    //Console.WriteLine("sup");
-                }
-                broughtDown.Clear();
-            }
+            //    while (!broughtDown.Contains(multiple))
+            //    {
+            //        broughtDown.Add(multiple);
+            //        remainder = multiple % i;
+            //        multiple = remainder * 10;
+            //    }
 
-            Console.WriteLine($"Problem 26: {maxRecurrenceNum}");
-            Console.WriteLine(maxRecurrenceCount);
+            //    if(broughtDown.Count > maxRecurrenceCount)
+            //    {
+            //        maxRecurrenceCount = broughtDown.Count;
+            //        maxRecurrenceNum = i;
+            //        //Console.WriteLine("sup");
+            //    }
+            //    broughtDown.Clear();
+            //}
+
+            //Console.WriteLine($"Problem 26: {maxRecurrenceNum}");
+            //Console.WriteLine(maxRecurrenceCount);
 
             #endregion
 
             #region Problem 27: Quadratic Primes
 
-            int maximumPrime = 0;
-            int maxA = 0;
-            int maxB = 0;
+            //int maximumPrime = 0;
+            //int maxA = 0;
+            //int maxB = 0;
 
-            for (int a = -999; a <= 999; a++)
+            //for (int a = -999; a <= 999; a++)
+            //{
+
+            //    for (int b = -1000; b <= 1000; b++)
+            //    {
+
+            //        int n = -1;
+            //        bool isPrime = true;
+
+            //        int result = 0;
+            //        int consecutivePrimes = -1;
+
+            //        // Find number of consecutive sums
+            //        while(true)
+            //        {
+
+            //            consecutivePrimes++;
+            //            n++;
+
+            //            // Incredible formula
+            //            result = n*n + a*n + b;
+            //            int lastCheck = 0;
+
+            //            if(result < 0)
+            //            {
+            //                lastCheck = -1 * result / 2;
+            //            }
+            //            else
+            //            {
+            //                lastCheck = result / 2;
+            //            }
+
+            //            // Check if prime
+            //            for(int i = 2; i <= lastCheck; i++)
+            //            {
+
+            //                if(result % i == 0)
+            //                {
+
+            //                    isPrime = false;
+
+            //                    if(consecutivePrimes > maximumPrime)
+            //                    {
+            //                        maximumPrime = consecutivePrimes;
+            //                        maxA = a;
+            //                        maxB = b;
+            //                        Console.WriteLine($"A: {a}, B: {b}, N: {n}, A*B: {a * b}");
+            //                    }
+
+            //                    break;
+
+            //                }
+
+            //            }
+
+            //            if (!isPrime)
+            //            {
+
+            //                break;
+            //            }
+
+            //        }
+
+
+            //    }
+
+            //}
+
+            #endregion
+
+            #region Problem 28: Number spiral diagonals
+
+            long totalCount = 1;
+            long surfaceCount = 0;
+            long multiple = 0;
+
+            long currentSum = 1;
+            long currentNum = 1;
+            long increment = 1;
+            long step = 0;
+
+            long row = 1001;
+
+            while (surfaceCount <= (2*row + 2 * (row - 2)))
             {
+                Console.WriteLine("Current sum: " + currentSum);
+                //Console.WriteLine("items on surface: " + surfaceCount);
+                totalCount = 1 + multiple * 8;
+                surfaceCount += 8;
 
-                for (int b = -1000; b <= 1000; b++)
+                step += 2;
+               
+
+                for (long i = 1; i <= surfaceCount; i += step)
                 {
-
-                    int n = -1;
-                    bool isPrime = true;
-
-                    int result = 0;
-                    int consecutivePrimes = -1;
-
-                    // Find number of consecutive sums
-                    while(true)
-                    {
-
-                        consecutivePrimes++;
-                        n++;
-
-                        // Incredible formula
-                        result = n*n + a*n + b;
-                        int lastCheck = 0;
-
-                        if(result < 0)
-                        {
-                            lastCheck = -1 * result / 2;
-                        }
-                        else
-                        {
-                            lastCheck = result / 2;
-                        }
-
-                        // Check if prime
-                        for(int i = 2; i <= lastCheck; i++)
-                        {
-
-                            if(result % i == 0)
-                            {
-
-                                isPrime = false;
-
-                                if(consecutivePrimes > maximumPrime)
-                                {
-                                    maximumPrime = consecutivePrimes;
-                                    maxA = a;
-                                    maxB = b;
-                                    Console.WriteLine($"A: {a}, B: {b}, N: {n}, A*B: {a * b}");
-                                }
-
-                                break;
-
-                            }
-                            
-                        }
-
-                        if (!isPrime)
-                        {
-                            
-                            break;
-                        }
-                        
-                    }
-
-
+                    currentNum += step;
+                    currentSum += currentNum;
+                    //Console.WriteLine(currentNum);
+                    
                 }
 
+                
+
+
+                multiple++;
             }
+
+            
 
             #endregion
 
