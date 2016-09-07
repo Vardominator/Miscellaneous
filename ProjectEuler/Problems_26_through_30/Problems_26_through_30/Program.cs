@@ -125,43 +125,97 @@ namespace Problems_26_through_30
 
             #region Problem 28: Number spiral diagonals
 
-            long totalCount = 1;
-            long surfaceCount = 0;
-            long multiple = 0;
+            //long totalCount = 1;
+            //long surfaceCount = 0;
+            //long multiple = 0;
 
-            long currentSum = 1;
-            long currentNum = 1;
-            long increment = 1;
-            long step = 0;
+            //long currentSum = 1;
+            //long currentNum = 1;
+            //long increment = 1;
+            //long step = 0;
 
-            long row = 1001;
+            //long row = 1001;
 
-            while (surfaceCount <= (2*row + 2 * (row - 2)))
+            //while (surfaceCount <= (2*row + 2 * (row - 2)))
+            //{
+            //    Console.WriteLine("Current sum: " + currentSum);
+            //    //Console.WriteLine("items on surface: " + surfaceCount);
+            //    totalCount = 1 + multiple * 8;
+            //    surfaceCount += 8;
+
+            //    step += 2;
+
+
+            //    for (long i = 1; i <= surfaceCount; i += step)
+            //    {
+            //        currentNum += step;
+            //        currentSum += currentNum;
+            //        //Console.WriteLine(currentNum);
+
+            //    }
+
+
+
+
+            //    multiple++;
+            //}
+
+
+
+            #endregion
+
+            #region Problem 29: Distinct Powers
+
+            //int min = 2;
+            //int max = 100;
+
+            //SortedSet<BigInteger> distinctTerms = new SortedSet<BigInteger>();
+
+            //for (int a = min; a <= max; a++)
+            //{
+            //    for(int b = min; b <= max; b++)
+            //    {
+
+            //        BigInteger current = BigInteger.Pow(a, b);
+
+            //        if (!distinctTerms.Contains(current))
+            //        {
+            //            distinctTerms.Add(current);
+            //        }
+
+            //    }
+
+            //}
+
+            //Console.WriteLine($"Problem 29: {distinctTerms.Count}");
+
+            #endregion
+
+            #region Problem 30: Digit fifth powers
+
+            ulong fiveDigitTotal = 0;
+
+            for (ulong i = 2; i < 2000000; i++)
             {
-                Console.WriteLine("Current sum: " + currentSum);
-                //Console.WriteLine("items on surface: " + surfaceCount);
-                totalCount = 1 + multiple * 8;
-                surfaceCount += 8;
 
-                step += 2;
-               
-
-                for (long i = 1; i <= surfaceCount; i += step)
-                {
-                    currentNum += step;
-                    currentSum += currentNum;
-                    //Console.WriteLine(currentNum);
-                    
-                }
-
+                List<int> digits = i.ToString().Select(digit => int.Parse(digit.ToString())).ToList();
+                
+                ulong power5Sum = 0;
                 
 
+                for (int j = 0; j < digits.Count; j++)
+                {
+                    power5Sum += (ulong)Math.Pow(digits[j], 5);
+                }
 
-                multiple++;
+                if(i == power5Sum)
+                {
+                    fiveDigitTotal += power5Sum;
+                    Console.WriteLine(i);
+                }
+
             }
-
-            
-
+            Console.WriteLine($"Problem 30: {fiveDigitTotal}");
             #endregion
 
         }
