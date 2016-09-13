@@ -8,6 +8,13 @@ namespace Problems_31_through_35
 {
     class Program
     {
+
+        struct Pair
+        {
+            long x;
+            long y;
+        }
+
         static void Main(string[] args)
         {
 
@@ -60,10 +67,66 @@ namespace Problems_31_through_35
 
             #region Problem 32: Pandigital products
 
-            
+            long pandigitalSum = 0;
 
+            HashSet<long> memoizedProducts = new HashSet<long>();
+
+
+            for(long num = 1; num < 5000; num++)
+            {
+                for(long num2 = 1; num2 < 5000; num2++)
+                {
+                    long result = num * num2;
+                    
+                    if(IsPandigital(num, num2, result))
+                    {
+
+                        if (!memoizedProducts.Contains(result))
+                        {
+                            memoizedProducts.Add(result);
+                            Console.WriteLine($"{num} x {num2} = {result}");
+                            pandigitalSum += result;
+                        }
+
+                    }
+                }
+            }
+            Console.WriteLine($"Problem 32: {pandigitalSum}");
             #endregion
 
         }
+
+
+        // Problem 32 helper
+        public static bool IsPandigital(long num1, long num2, long result)
+        {
+
+            string numStr = num1.ToString() + num2.ToString() + result.ToString();
+
+            HashSet<char> digits = new HashSet<char>();
+
+            if(numStr.Contains('0') || numStr.Length < 9)
+            {
+                return false;
+            }
+
+            foreach (var digitChar in numStr)
+            {
+
+                if (!digits.Contains(digitChar))
+                {
+                    digits.Add(digitChar);
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            
+            return true;
+
+        }
+
     }
 }
