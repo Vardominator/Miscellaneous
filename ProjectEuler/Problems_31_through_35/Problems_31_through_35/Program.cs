@@ -67,31 +67,37 @@ namespace Problems_31_through_35
 
             #region Problem 32: Pandigital products
 
-            long pandigitalSum = 0;
+            //long pandigitalSum = 0;
 
-            HashSet<long> memoizedProducts = new HashSet<long>();
+            //HashSet<long> memoizedProducts = new HashSet<long>();
 
 
-            for(long num = 1; num < 5000; num++)
-            {
-                for(long num2 = 1; num2 < 5000; num2++)
-                {
-                    long result = num * num2;
-                    
-                    if(IsPandigital(num, num2, result))
-                    {
+            //for(long num = 1; num < 5000; num++)
+            //{
+            //    for(long num2 = 1; num2 < 5000; num2++)
+            //    {
+            //        long result = num * num2;
 
-                        if (!memoizedProducts.Contains(result))
-                        {
-                            memoizedProducts.Add(result);
-                            Console.WriteLine($"{num} x {num2} = {result}");
-                            pandigitalSum += result;
-                        }
+            //        if(IsPandigital(num, num2, result))
+            //        {
 
-                    }
-                }
-            }
-            Console.WriteLine($"Problem 32: {pandigitalSum}");
+            //            if (!memoizedProducts.Contains(result))
+            //            {
+            //                memoizedProducts.Add(result);
+            //                Console.WriteLine($"{num} x {num2} = {result}");
+            //                pandigitalSum += result;
+            //            }
+
+            //        }
+            //    }
+            //}
+            //Console.WriteLine($"Problem 32: {pandigitalSum}");
+            #endregion
+
+            #region Problem 33: Digit cancelling fractions
+
+
+
             #endregion
 
         }
