@@ -96,9 +96,164 @@ namespace Problems_31_through_35
 
             #region Problem 33: Digit cancelling fractions
 
+            //HashSet<string> nontrivial = new HashSet<string>();
 
+            //int productNum = 1;
+            //int productDen = 1;
+
+            //// numerator
+            //for (int i = 10; i < 99; i++)
+            //{
+            //    for (int j = i + 1; j <= 99; j++)
+            //    {
+            //        if (i % 10 != 0 && j % 10 != 0)
+            //        {
+            //            int numerator = i;
+            //            int denominator = j;
+
+            //            int numeratorDigit1 = numerator / 10;
+            //            int numeratorDigit2 = numerator % 10;
+
+            //            int denominatorDigit1 = denominator / 10;
+            //            int denominatorDigit2 = denominator % 10;
+
+            //            if ((double)numeratorDigit1 / denominatorDigit2 == (double)numerator / denominator && (double)numeratorDigit2 / denominatorDigit1 == 1.0)
+            //            {
+            //                nontrivial.Add($"{ numeratorDigit1}/{ denominatorDigit2}");
+            //                productNum *= numeratorDigit1;
+            //                productDen *= denominatorDigit2;
+            //            }
+            //        }
+            //    }
+
+            //}
+
+            //for(int k = 9; k >= 2; k--)
+            //{
+            //    while(productNum % k == 0)
+            //    {
+            //        productNum /= k;
+            //        productDen /= k;
+            //    }
+            //}
+
+            //Console.WriteLine($"Problem 33: {productDen}");
 
             #endregion
+
+            #region Problem 34: Digit Factorials
+
+            //long totalSum = 0;
+
+            //for (int i = 3; i <= 10000000; i++)
+            //{
+
+            //    string numString = i.ToString();
+
+            //    long factorialSum = 0;
+
+            //    for (int j = 0; j < numString.Length; j++)
+            //    {
+            //        factorialSum += factorial(long.Parse(numString[j].ToString()));
+            //    }
+
+            //    if (factorialSum == i)
+            //    {
+            //        Console.WriteLine($"{i}: {factorialSum}");
+            //        totalSum += i;
+            //    }
+
+            //}
+            //Console.WriteLine($"Problem 34: {totalSum}");
+            #endregion
+
+            #region Problem 35: Circular primes
+
+            int circularPrimes = 0;
+
+            for (int i = 2; i <= 1000000; i++)
+            {
+                if (IsPrime(i))
+                {
+
+                    string NumString = i.ToString();
+                    HashSet<string> rotations = new HashSet<string>();
+
+                    bool rotationsPrime = true;
+
+                    while (!rotations.Contains(NumString))
+                    {
+                        rotations.Add(NumString);
+                        NumString = LeftRotateString(NumString);
+
+                        if (!IsPrime(int.Parse(NumString)))
+                        {
+                            rotationsPrime = false;
+                            break;
+                        }
+
+                    }
+
+                    if (rotationsPrime)
+                    {
+                        Console.WriteLine(i);
+                        circularPrimes++;
+                    }
+
+                }
+            }
+
+            Console.WriteLine($"Problem 35: {circularPrimes}");
+
+            #endregion
+
+        }
+        
+
+        // Problem 35 helpers
+        public static string LeftRotateString(string str)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            char firstChar = str[0];
+
+            for (int i = 1; i < str.Length; i++)
+            {
+                sb.Append(str[i]);
+            }
+
+            sb.Append(firstChar);
+
+            return sb.ToString();
+
+        }
+
+        public static bool IsPrime(int num)
+        {
+
+            for (int i = 2; i <= num / 2; i++)
+            {
+                if(num % i == 0)
+                {
+                    return false;
+                }
+
+            }
+
+            return true;
+
+        }
+
+
+        // Problem 34 helper
+        public static long factorial(long num)
+        {
+
+            if(num < 2)
+            {
+                return 1;
+            }
+            return num * factorial(num - 1);
 
         }
 
