@@ -32,55 +32,55 @@ namespace Problems_36_through_40
 
             #region Problem 37: Truncatable primes
 
-            int sum = 0;
-            for (int i = 11; i <= 800000; i++)
-            {
-                bool isTruncatable = true;
+            //int sum = 0;
+            //for (int i = 11; i <= 800000; i++)
+            //{
+            //    bool isTruncatable = true;
 
-                if (IsPrime(i))
-                {
+            //    if (IsPrime(i))
+            //    {
 
-                    string numStr = i.ToString();
+            //        string numStr = i.ToString();
 
-                    for (int j = 0; j < numStr.Length; j++)
-                    {
-                        string subNumLeft = numStr.Substring(j);
+            //        for (int j = 0; j < numStr.Length; j++)
+            //        {
+            //            string subNumLeft = numStr.Substring(j);
 
-                        //Console.WriteLine(subNumLeft);
-                        if (!IsPrime(int.Parse(subNumLeft)))
-                        {
+            //            //Console.WriteLine(subNumLeft);
+            //            if (!IsPrime(int.Parse(subNumLeft)))
+            //            {
 
-                            isTruncatable = false;
-                            break;
-                        }
-                    }
+            //                isTruncatable = false;
+            //                break;
+            //            }
+            //        }
 
-                    if (isTruncatable)
-                    {
-                        for (int k = numStr.Length; k > 0; k--)
-                        {
-                            string subNumRight = numStr.Substring(0, k);
-                            //Console.WriteLine(subNumRight);
-                            if (!IsPrime(int.Parse(subNumRight)))
-                            {
+            //        if (isTruncatable)
+            //        {
+            //            for (int k = numStr.Length; k > 0; k--)
+            //            {
+            //                string subNumRight = numStr.Substring(0, k);
+            //                //Console.WriteLine(subNumRight);
+            //                if (!IsPrime(int.Parse(subNumRight)))
+            //                {
 
-                                isTruncatable = false;
-                                break;
-                            }
-                        }
-                    }
-                    if (isTruncatable)
-                    {
-                        Console.WriteLine(i);
-                        sum += i;
-                    }
-                }
+            //                    isTruncatable = false;
+            //                    break;
+            //                }
+            //            }
+            //        }
+            //        if (isTruncatable)
+            //        {
+            //            Console.WriteLine(i);
+            //            sum += i;
+            //        }
+            //    }
 
-            }
+            //}
 
-            Console.WriteLine($"Problem 37: {sum}");
-            
-            
+            //Console.WriteLine($"Problem 37: {sum}");
+
+
             #endregion
 
 
@@ -117,6 +117,77 @@ namespace Problems_36_through_40
             //    }
             //}
             //Console.WriteLine($"Problem 38: {largestPandigital}");
+            #endregion
+
+
+            #region Problem 39: Integer right triangles
+
+            int maximumSize = 0;
+            int maxP = 1;
+
+            for (int p = 1; p <= 1000; p++)
+            {
+
+                HashSet<double> solutions = new HashSet<double>();
+
+                for (int a = 1; a <= p / 2; a++)
+                {
+                    for (int b = 1; b < p / 2; b++)
+                    {
+                        double c = Math.Sqrt(a * a + b * b);
+
+                        if (a + b + c == p)
+                        {
+                            solutions.Add(a);
+                            solutions.Add(b);
+                            solutions.Add(c);
+                        }
+
+                    }
+
+                }
+
+                if(solutions.Count/3 > maximumSize)
+                {
+                    maximumSize = solutions.Count / 3;
+                    maxP = p;
+                }
+            }
+
+            Console.WriteLine($"Problem 39: {maxP}");
+
+            #endregion
+
+
+            #region Problem 40: Champernowne's constant
+
+            //StringBuilder sb = new StringBuilder();
+
+            //for (int i = 0; i < 1000000; i++)
+            //{
+            //    sb.Append(i);
+            //}
+
+            ////Console.WriteLine(sb.Length);
+            //long result = 1;
+
+            //int numberOfDigits = 1;
+
+            //for (int i = 1; i <= 1000000; i*=10)
+            //{
+
+            //    //for (int j = 0; j < numberOfDigits; j++)
+            //    //{
+            //        //Console.Write(sb[i + j]);
+            //        result *= long.Parse(sb[i].ToString());
+
+            //    //}
+
+            //    numberOfDigits++;
+
+            //}
+
+            //Console.WriteLine($"Problem 40: {result}");
             #endregion
 
 
