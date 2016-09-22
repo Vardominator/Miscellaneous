@@ -50,34 +50,74 @@ namespace Problems_41_through_45
 
             #region Problem 42: Coded triangle numbers
 
-            StreamReader sr = new StreamReader(@"C:\Users\barse\Desktop\Github\Miscellaneous\ProjectEuler\Problems_41_through_45\Problems_41_through_45\problem42words.txt");
+            //StreamReader sr = new StreamReader(@"C:\Users\barse\Desktop\Github\Miscellaneous\ProjectEuler\Problems_41_through_45\Problems_41_through_45\problem42words.txt");
 
-            string[] words = sr.ReadLine().Split(',');
+            //string[] words = sr.ReadLine().Split(',');
 
-            int numberOfTriangleWords = 0;
+            //int numberOfTriangleWords = 0;
 
-            HashSet<long> triangleNumbers = new HashSet<long>();
-            for (int i = 0; i < 100000; i++)
+            //HashSet<long> triangleNumbers = new HashSet<long>();
+            //for (int i = 0; i < 100000; i++)
+            //{
+            //    triangleNumbers.Add(triangle(i));
+
+            //}
+
+            //foreach (string word in words)
+            //{
+
+            //    string cleanedWord = word.Trim(new char[] { '\\','"'});
+
+            //    int sum = cleanedWord.Select(x => (int)(x - 64)).Sum();
+
+            //    if (triangleNumbers.Contains(sum))
+            //    {
+            //        numberOfTriangleWords++;
+            //        //Console.WriteLine(sum);
+            //    }
+
+            //}
+            //Console.WriteLine($"Problem 42: {numberOfTriangleWords}");
+            #endregion
+
+            #region Problem 43: Sub-string divisibility
+
+            HashSet<string> permutations = new HashSet<string>();
+
+            Permute(1234567890.ToString().ToCharArray(), 0, 9, permutations);
+            int[] allowedDivisors = { 2, 3, 5, 7, 11, 13, 17 };
+
+            long finalSum = 0;
+
+            foreach (string pandigitalValue in permutations)
             {
-                triangleNumbers.Add(triangle(i));
+                bool isDivisible = true;
+                //string numStr = pandigitalValue.ToString();
 
-            }
-
-            foreach (string word in words)
-            {
-
-                string cleanedWord = word.Trim(new char[] { '\\','"'});
-
-                int sum = cleanedWord.Select(x => (int)(x - 64)).Sum();
-
-                if (triangleNumbers.Contains(sum))
+                for (int i = 1; i < pandigitalValue.Length - 2; i++)
                 {
-                    numberOfTriangleWords++;
-                    //Console.WriteLine(sum);
+
+                    string subStrNum = pandigitalValue.Substring(i, 3);
+                    int newNum = int.Parse(subStrNum);
+
+                    if (newNum % allowedDivisors[i - 1] != 0)
+                    {
+                        isDivisible = false;
+                        break;
+                    }
+
+                }
+                
+                if (isDivisible)
+                {
+                    Console.WriteLine(pandigitalValue);
+                    finalSum += long.Parse(pandigitalValue);
                 }
 
             }
-            Console.WriteLine($"Problem 42: {numberOfTriangleWords}");
+
+            Console.WriteLine($"Problem 43: {finalSum}");
+
             #endregion
 
         }
@@ -93,7 +133,7 @@ namespace Problems_41_through_45
 
         #region Problem 41 helpers
 
-        public static void Permute(char[] number, int l, int r, HashSet<long> permutations)
+        public static void Permute(char[] number, int l, int r, HashSet<string> permutations)
         {
             if (l == r) { return; }
             else
@@ -107,13 +147,13 @@ namespace Problems_41_through_45
             }
         }
 
-        public static long Swap(char[] number, int a, int b)
+        public static string Swap(char[] number, int a, int b)
         {
             char temp = number[a];
             number[a] = number[b];
             number[b] = temp;
 
-            return CreateLong(number);
+            return new string(number);
         }
 
         public static long CreateLong(char[] number)
