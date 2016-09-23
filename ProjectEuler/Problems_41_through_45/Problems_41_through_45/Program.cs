@@ -82,45 +82,123 @@ namespace Problems_41_through_45
 
             #region Problem 43: Sub-string divisibility
 
-            HashSet<string> permutations = new HashSet<string>();
+            //HashSet<string> permutations = new HashSet<string>();
 
-            Permute(1234567890.ToString().ToCharArray(), 0, 9, permutations);
-            int[] allowedDivisors = { 2, 3, 5, 7, 11, 13, 17 };
+            //Permute(1234567890.ToString().ToCharArray(), 0, 9, permutations);
+            //int[] allowedDivisors = { 2, 3, 5, 7, 11, 13, 17 };
 
-            long finalSum = 0;
+            //long finalSum = 0;
 
-            foreach (string pandigitalValue in permutations)
-            {
-                bool isDivisible = true;
-                //string numStr = pandigitalValue.ToString();
+            //foreach (string pandigitalValue in permutations)
+            //{
+            //    bool isDivisible = true;
+            //    //string numStr = pandigitalValue.ToString();
 
-                for (int i = 1; i < pandigitalValue.Length - 2; i++)
-                {
+            //    for (int i = 1; i < pandigitalValue.Length - 2; i++)
+            //    {
 
-                    string subStrNum = pandigitalValue.Substring(i, 3);
-                    int newNum = int.Parse(subStrNum);
+            //        string subStrNum = pandigitalValue.Substring(i, 3);
+            //        int newNum = int.Parse(subStrNum);
 
-                    if (newNum % allowedDivisors[i - 1] != 0)
-                    {
-                        isDivisible = false;
-                        break;
-                    }
+            //        if (newNum % allowedDivisors[i - 1] != 0)
+            //        {
+            //            isDivisible = false;
+            //            break;
+            //        }
 
-                }
-                
-                if (isDivisible)
-                {
-                    Console.WriteLine(pandigitalValue);
-                    finalSum += long.Parse(pandigitalValue);
-                }
+            //    }
 
-            }
+            //    if (isDivisible)
+            //    {
+            //        Console.WriteLine(pandigitalValue);
+            //        finalSum += long.Parse(pandigitalValue);
+            //    }
 
-            Console.WriteLine($"Problem 43: {finalSum}");
+            //}
+
+            //Console.WriteLine($"Problem 43: {finalSum}");
+
+            #endregion
+
+            #region Problem 44: Pentagon numbers
+
+            //HashSet<string> pentagonals = new HashSet<string>();
+            //List<long> pents = new List<long>();
+            //long maxValue = 0;
+
+            //for (int i = 1000; i <= 10000; i++)
+            //{
+            //    pentagonals.Add(Pentagonal(i).ToString());
+            //    pents.Add(Pentagonal(i));
+            //    //Console.WriteLine(Pentagonal(i));
+            //}
+
+            //for (int j = 0; j < pents.Count - 1; j++)
+            //{
+            //    for (int k = j + 1; k < pents.Count; k++)
+            //    {
+            //        if (pentagonals.Contains((pents[j] + pents[k]).ToString()))
+            //        {
+            //            if (pentagonals.Contains((Math.Abs(pents[j] - pents[k])).ToString()))
+            //            {
+            //                if(Math.Abs(pents[j] - pents[k]) > maxValue)
+            //                {
+            //                    maxValue = Math.Abs(pents[j] - pents[k]);
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+            //Console.WriteLine($"Problem 44: {maxValue}");
+            #endregion
+
+            #region Problem 45: Triangular, Pentagonal, and Hexagonal
+
+            //var triangles = new HashSet<long>();
+            //var pentagons = new HashSet<long>();
+            //var hexagons = new HashSet<long>();
+            
+
+            //for (int i = 1; i < 1000000; i++)
+            //{
+            //    pentagons.Add(Pentagonal(i));
+            //    hexagons.Add(Hexagonal(i));
+            //}
+            
+
+            //for (int i = 286; i < 1000000; i++)
+            //{
+            //    if (pentagons.Contains(Triangular(i)) && hexagons.Contains(Triangular(i)))
+            //    {
+            //        Console.WriteLine($"Problem 45: {Triangular(i)}");
+            //    }
+
+            //}
 
             #endregion
 
         }
+
+
+        #region Problem 44/45 helpers
+
+        public static long Pentagonal(long num)
+        {
+            return num * (3 * num - 1) / 2;
+        }
+
+        public static long Triangular(long num)
+        {
+            return num * (num + 1) / 2;
+        }
+
+        public static long Hexagonal(long num)
+        {
+            return num * (2 * num - 1);
+        }
+
+        #endregion
 
         #region Problem 42 helpers
 
