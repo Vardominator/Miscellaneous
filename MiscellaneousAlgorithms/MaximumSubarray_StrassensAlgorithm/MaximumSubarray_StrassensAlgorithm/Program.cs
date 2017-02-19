@@ -75,7 +75,7 @@ namespace MaximumSubarray_StrassensAlgorithm
 
         // For Strassen's algorithm we must assume that n is an exact power of 2 in each of the nxn matrices
         // The dimensions need to be integers as they are divided at each recursive step
-            `
+        
 
     }
 
